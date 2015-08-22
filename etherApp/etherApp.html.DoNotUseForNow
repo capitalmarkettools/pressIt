@@ -1,0 +1,29 @@
+<head>
+  <title>pressIt</title>
+</head>
+
+<body>
+  <h1>Welcome to PressIt powered by Ethereum!</h1>
+
+  {{> account}}
+  {{> contract}}
+  {{> balance}}
+  {{> web3Version}}
+
+</body>
+
+<template name="account">
+  <button>Load Account</button>
+  <p>Account: {{accountNumber}}</p>
+</template>
+<template name="contract">
+  <button>Load Contract</button>
+  <p>Contract: {{contract}}</p>
+</template>
+<template name="balance">
+  <button>Refresh Balance</button>
+  <p>Balance: {{balance}}</p>
+</template>
+<template name="web3Version">
+  <p>Web3 Api Version: {{web3Version}}</p>
+</template>

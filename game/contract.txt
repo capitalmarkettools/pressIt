@@ -1,0 +1,41 @@
+#This contract should not have business knowledge but behave only like a payment service
+
+#contract.storage is key-value pair with 2^160 keys. Conceptually one column with 2^160 rows. The following describes how to use additional columns
+#Key value = row number + (total number of rows x column number) + constant. Total supported rows is 2^256
+
+#Contract to keep track of all pressIt games
+#2 players per game
+#no limit in number of games
+#for each game we have: index, status, player1, bet1, result1, player2, bet2, result2, winner 
+#index is a unique identifier of the game
+#status = [available, inProgress, completed]
+#if player does not play in 1h then game is lost
+
+#web site shows all available bets by querying the contract and contract returns list of available games
+#when player2 wants to join a game he clicks on it and submits play request
+#task = [newGame, joinGame, crownWinner]
+
+init:
+#
+code:
+task = msg.data[0]
+if task == 'newGame'
+   player1 = msg.sender
+   bet1 = msg.data[1]
+   game = newGame()
+   game.player1 = player1
+   game.bet1 = bet1
+   #do not know how to take escrow amount
+if task == 'joinGame':
+   player2 = msg.sender
+   gameIndex = msg.data[1]
+   game = getGame(gameIndex)
+   game.player2 = player2
+   game.status = inProgress
+   #on the app player1 needs to get notified and has 1 day to play
+   #on the app the game needs to be removed
+   #do not know how to take escrow amount
+if task == 'crownWinner'
+   winner = msg.data[1] 
+   #do not know how to determine this as it might be a long time delay. Maybe logic should be to just store the results and then when both results are available the contract decides. For now, I'll just assume that the winner is determined in the app
+   #do not know how to transfer the escrow amount to the winner

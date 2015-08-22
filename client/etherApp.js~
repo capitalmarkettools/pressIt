@@ -1,0 +1,58 @@
+if (Meteor.isClient) {
+  Session.setDefault('accountNumber', 2);
+  Session.setDefault('contract', "Source code of contract");
+  Session.setDefault('balance', 1234);
+  Session.setDefault('web3Version', web3.version.api);
+
+  Template.balance.helpers({
+      balance: function () {
+	  var c = web3
+	      .setProvider(new web3.providers.HttpProvider("http://localhost:8545"));;
+	  return web3.isConnected();
+      }
+  });
+
+  Template.web3Version.helpers({
+      web3Version: function () {
+	  return Session.get("web3Version");
+      }
+  });
+
+  Template.account.helpers({
+      accountNumber: function () {
+	  return Session.get("accountNumber");
+      }
+  });
+
+  Template.contract.helpers({
+      contract: function () {
+	  return Session.get("contract");
+      }
+  });
+
+  Template.account.events({
+    'click button': function () {
+      Session.set('accountNumber', Session.get('accountNumber') + 1);
+    }
+  });
+
+  Template.contract.events({
+    'click button': function () {
+      // increment the counter when button is clicked
+      Session.set('contract', "ABC");
+    }
+  });
+
+  Template.balance.events({
+    'click button': function () {
+      // increment the counter when button is clicked
+      Session.set('balance', 10);
+    }
+  });
+}
+
+if (Meteor.isServer) {
+  Meteor.startup(function () {
+    // code to run on server at startup
+  });
+}

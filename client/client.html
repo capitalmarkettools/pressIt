@@ -1,0 +1,25 @@
+<template name="main">
+    <h1>PressIt Header</h1>
+    {{> navigation}}
+    {{> yield}}
+    <hr />
+    <p>Copyright &copy; CMT, 2014-2015.</p>
+</template>
+
+<template name="home">
+    <h1>Home</h1>
+</template>
+
+<template name="about">
+    <h1>About</h1>
+</template>
+
+<template name="game">
+    {{phaserGame}}}
+</template>
+
+<template name="navigation">
+    <a href="{{pathFor route='home'}}">Home</a>
+    <a href="{{pathFor route='about'}}">About</a>
+    <a href="{{pathFor route='game'}}">Game</a>
+</template>
