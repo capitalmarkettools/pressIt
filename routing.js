@@ -10,6 +10,9 @@ Router.route('/', {
 });
 
 Router.route('/home');
-
+Router.route('/rules');
+Router.route('/createNewGame');
+Router.route('/listGames');
+Router.route('/game');
 Router.route('/about');
 

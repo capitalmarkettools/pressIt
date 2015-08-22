@@ -1,25 +1,41 @@
 <template name="main">
-    <h1>PressIt Header</h1>
     {{> navigation}}
     {{> yield}}
     <hr />
-    <p>Copyright &copy; CMT, 2014-2015.</p>
+    <p>Copyright &copy; TG Investments & Research, LLC., 2014-2015.</p>
 </template>
 
 <template name="home">
-    <h1>Home</h1>
+    <p>Welcome</p>
 </template>
 
-<template name="about">
-    <h1>About</h1>
+<template name="rules">
+    <p>Description of the Rules of the game</p>
+</template>
+
+<template name="createNewGame">
+    <p>Two buttons. One for the BTC amount and one for Submit</p>
+</template>
+
+<template name="listGames">
+    <p>List all games that are available. Click on one and you will join the game</p>
 </template>
 
 <template name="game">
-    {{phaserGame}}}
+    {{phaserGame}}
 </template>
 
+<template name="about">
+    <h1>About the game and who created it</h1>
+</template>
+
+
 <template name="navigation">
+    <p>Review if this should be selective of the screen or if I can go anywhere at any time</p>
     <a href="{{pathFor route='home'}}">Home</a>
-    <a href="{{pathFor route='about'}}">About</a>
+    <a href="{{pathFor route='rules'}}">Rules</a>
+    <a href="{{pathFor route='createNewGame'}}">Create New Game</a>
+    <a href="{{pathFor route='listGames'}}">List Games</a>
     <a href="{{pathFor route='game'}}">Game</a>
+    <a href="{{pathFor route='about'}}">About</a>
 </template>
