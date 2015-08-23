@@ -55,3 +55,11 @@ if (Meteor.isServer) {
     // code to run on server at startup
   });
 }
+/*
+var uriString = new URI({
+    address: '12A1MyfXbW6RhdRAZEqofac5jCQQjwEPBu',
+    amount : 10000, // in satoshis
+    message: 'My payment request'
+});
+var uriString = uri.toString();
+*/

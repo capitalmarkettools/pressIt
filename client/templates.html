@@ -1,24 +1,43 @@
 <template name="main">
-    {{> navigation}}
     {{> yield}}
     <hr />
     <p>Copyright &copy; TG Investments & Research, LLC., 2014-2015.</p>
 </template>
 
 <template name="home">
-    <p>Welcome</p>
+    <ul>
+        <li><button id="rules">Rules</button></li>
+        <li><button id="listGames">List Games</button></li>
+        <li><button id="newGame">New Game</button></li>
+    </ul>
 </template>
 
 <template name="rules">
     <p>Description of the Rules of the game</p>
+    <ul>
+        <li><button id="home">Home</button></li>
+    </ul>
 </template>
 
-<template name="createNewGame">
-    <p>Two buttons. One for the BTC amount and one for Submit</p>
+<template name="newGame">
+    <!--Button to add a new game-->
+    <form class="newGame">
+        <input type="number" name="btcAmount" placeholder="Add Bet in BTC" />
+    </form>
+    <!--Navigation buttons-->
+    <ul>
+        <li><button id="home">Home</button></li>
+    </ul>
 </template>
 
 <template name="listGames">
     <p>List all games that are available. Click on one and you will join the game</p>
+    {{#each games}}
+         <div>{{btcAmount}}</div>
+    {{/each}}
+    <ul>
+        <li><button id="home">Home</button></li>
+    </ul>
 </template>
 
 <template name="game">
@@ -27,6 +46,9 @@
 
 <template name="about">
     <h1>About the game and who created it</h1>
+    <ul>
+        <li><button id="home">Home</button></li>
+    </ul>
 </template>
 
 

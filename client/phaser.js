@@ -73965,7 +73965,7 @@ module.exports = {
     Utils :                         require('./utils/Utils'),
     World :                         require('./world/World'),
     vec2 :                          require('./math/vec2'),
-    version :                       require('../package.json').version,
+    version :                       require('../package.js').version,
 };
 
 },{"../package.json":6,"./collision/AABB":7,"./collision/Broadphase":8,"./collision/GridBroadphase":9,"./collision/NaiveBroadphase":10,"./collision/Narrowphase":11,"./collision/Ray":12,"./collision/RaycastResult":13,"./collision/SAPBroadphase":14,"./constraints/Constraint":15,"./constraints/DistanceConstraint":16,"./constraints/GearConstraint":17,"./constraints/LockConstraint":18,"./constraints/PrismaticConstraint":19,"./constraints/RevoluteConstraint":20,"./equations/AngleLockEquation":21,"./equations/ContactEquation":22,"./equations/Equation":23,"./equations/FrictionEquation":24,"./equations/RotationalVelocityEquation":26,"./events/EventEmitter":27,"./material/ContactMaterial":28,"./material/Material":29,"./math/vec2":31,"./objects/Body":32,"./objects/LinearSpring":33,"./objects/RotationalSpring":34,"./objects/Spring":35,"./shapes/Capsule":37,"./shapes/Circle":38,"./shapes/Convex":39,"./shapes/Heightfield":40,"./shapes/Line":41,"./shapes/Particle":42,"./shapes/Plane":43,"./shapes/Rectangle":44,"./shapes/Shape":45,"./solver/GSSolver":46,"./solver/Solver":47,"./utils/Utils":50,"./world/World":54}],37:[function(require,module,exports){
@@ -76187,7 +76187,7 @@ var  GSSolver = require('../solver/GSSolver')
 ,    RevoluteConstraint = require('../constraints/RevoluteConstraint')
 ,    PrismaticConstraint = require('../constraints/PrismaticConstraint')
 ,    GearConstraint = require('../constraints/GearConstraint')
-,    pkg = require('../../package.json')
+,    pkg = require('../../package.js')
 ,    Broadphase = require('../collision/Broadphase')
 ,    SAPBroadphase = require('../collision/SAPBroadphase')
 ,    Narrowphase = require('../collision/Narrowphase')
