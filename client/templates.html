@@ -1,54 +1,84 @@
 <template name="main">
-    {{> yield}}
+    <div id="main">
+        {{> yield}}
+    </div>
     <hr />
     <p>Copyright &copy; TG Investments & Research, LLC., 2014-2015.</p>
 </template>
 
 <template name="home">
-    <ul>
-        <li><button id="rules">Rules</button></li>
-        <li><button id="listGames">List Games</button></li>
-        <li><button id="newGame">New Game</button></li>
-    </ul>
+    <h1>Win BTC if You are Better</h1>
+    <hr />
+    <div id="navigation">
+        <hr />
+        <button id="rules">Rules</button>
+        <button id="listGames">List Games</button>
+        <button id="newGame">New Game</button>
+    </div>
 </template>
 
 <template name="rules">
-    <p>Description of the Rules of the game</p>
-    <ul>
-        <li><button id="home">Home</button></li>
-    </ul>
+    <h1>Rules of the Game</h1>
+    <hr />
+    <div id="navigation">
+        <hr />
+        <button id="home">Home</button>
+    </div>
 </template>
 
 <template name="newGame">
+    <h1>Enter BTC amount for new game</h1>
+    <h1 style="color:red">WARNING: THIS IS REAL AND WILL ACCESS YOUR BTC WALLET</h1>
+    <hr />
     <!--Button to add a new game-->
     <form class="newGame">
-        <input type="number" name="btcAmount" placeholder="Add Bet in BTC" />
+        <input type="number" step="0.00001" name="btcAmount" placeholder="Add Bet in BTC" />
     </form>
     <!--Navigation buttons-->
-    <ul>
-        <li><button id="home">Home</button></li>
-    </ul>
+    <div id="navigation">
+        <hr />
+        <button id="home">Home</button>
+    </div>
 </template>
 
 <template name="listGames">
-    <p>List all games that are available. Click on one and you will join the game</p>
-    {{#each games}}
-         <div>{{btcAmount}}</div>
-    {{/each}}
+    <h1>Current Games to Join</h1>
+    <h1 style="color:red">WARNING: BY CLICKING THE GAME YOU WILL ACCESS YOUR WALLET</h1>
+    <hr />
+    <div id="games">
     <ul>
-        <li><button id="home">Home</button></li>
+        {{#each games}}
+            <li>
+                <!--<input type="checkbox" checked="{{checked}}" class="toggle-checked" />-->
+                <button id="joinGame">Join Game</button>
+                {{btcAmount}}
+                <hr />
+            </li>
+        {{/each}}
     </ul>
+    </div>
+    <div id="navigation">
+        <hr />
+        <button id="home">Home</button>
+    </div>
 </template>
 
 <template name="game">
+    <h1>Play! The better one will earn the bid!</h1>
+    <hr />
     {{phaserGame}}
+    <div id="navigation">
+        <hr />
+        <button id="home">Home</button>
+    </div>
 </template>
 
 <template name="about">
-    <h1>About the game and who created it</h1>
-    <ul>
-        <li><button id="home">Home</button></li>
-    </ul>
+    <h1>Don't worry about who created this as it's blockchain based and therefore does not matter.</h1>
+    <div id="navigation">
+        <hr />
+        <button id="home">Home</button>
+    </div>
 </template>
 
 

@@ -4,6 +4,6 @@
 
 Template.listGames.helpers({
     games : function(){
-        return Games.find();
+        return Games.find({}, {sort: {btcAmount:1}});
     }
 });

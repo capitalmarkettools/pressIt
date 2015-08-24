@@ -1,0 +1,15 @@
+html {
+    font-family: sans-serif;
+    background: gold;
+
+    position: absolute;
+
+    padding: 0;
+    margin: 0 auto;
+
+    font-size: 14px;
+}
+
+ul {
+    list-style-type: none;
+}

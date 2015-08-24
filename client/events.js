@@ -32,12 +32,16 @@ Template.newGame.events({
 
 //        alert(btcAmount);
         Meteor.call('addGame', btcAmount);
+        Router.go('/listGames');
     }
 });
 
 Template.listGames.events({
     'click #home': function () {
         Router.go('/home');
+    },
+    'click #joinGame': function(event){
+        alert('Joining Game with bet '+event);
     }
 });
 
