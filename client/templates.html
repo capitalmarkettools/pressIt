@@ -1,5 +1,5 @@
 <template name="main">
-    <div id="main">
+    <div class="container" id="main">
         {{> yield}}
     </div>
     <hr />
@@ -9,7 +9,7 @@
 <template name="home">
     <h1>Win BTC if You are Better</h1>
     <hr />
-    <div id="navigation">
+    <div class="navigation" id="navigation">
         <hr />
         <button id="rules">Rules</button>
         <button id="listGames">List Games</button>
@@ -20,7 +20,7 @@
 <template name="rules">
     <h1>Rules of the Game</h1>
     <hr />
-    <div id="navigation">
+    <div class="navigation" id="navigation">
         <hr />
         <button id="home">Home</button>
     </div>
@@ -35,7 +35,7 @@
         <input type="number" step="0.00001" name="btcAmount" placeholder="Add Bet in BTC" />
     </form>
     <!--Navigation buttons-->
-    <div id="navigation">
+    <div class="navigation" id="navigation">
         <hr />
         <button id="home">Home</button>
     </div>
@@ -51,13 +51,13 @@
             <li>
                 <!--<input type="checkbox" checked="{{checked}}" class="toggle-checked" />-->
                 <button id="joinGame">Join Game</button>
-                {{btcAmount}}
+                BTC {{btcAmount}}
                 <hr />
             </li>
         {{/each}}
     </ul>
     </div>
-    <div id="navigation">
+    <div class="navigation" id="navigation">
         <hr />
         <button id="home">Home</button>
     </div>
@@ -67,7 +67,7 @@
     <h1>Play! The better one will earn the bid!</h1>
     <hr />
     {{phaserGame}}
-    <div id="navigation">
+    <div class="navigation" id="navigation">
         <hr />
         <button id="home">Home</button>
     </div>
@@ -75,7 +75,7 @@
 
 <template name="about">
     <h1>Don't worry about who created this as it's blockchain based and therefore does not matter.</h1>
-    <div id="navigation">
+    <div class="navigation" id="navigation">
         <hr />
         <button id="home">Home</button>
     </div>
