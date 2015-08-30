@@ -16,14 +16,13 @@ body {
     font-size: 14px;
 }
 
-.container {
+#main {
     max-width: 600px;
     margin: 0 auto;
-    min-height: 100%;
     background: yellow;
 }
 
-.navigation {
+#navigation {
     text-align: center;
 }
 
@@ -33,4 +32,19 @@ h1 {
 
 ul {
     list-style-type: none;
+}
+
+.navigationButton {
+    width: 125px;  height: 50px;
+}
+
+#rulesParagraph {
+    margin: 5px;
+}
+
+#phaserGame{
+    margin-top: 500px;
+    text-align: center;
+    margin: 0 auto;
+    max-width: 60px;
 }
