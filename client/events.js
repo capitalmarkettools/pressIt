@@ -2,7 +2,25 @@
  * Created by cmt on 8/22/15.
  */
 
-Template.home.events({
+/*Template.home.events({
+    'click #home': function () {
+        Router.go('/home');
+    },
+    'click #rules': function () {
+        Router.go('/rules');
+    },
+    'click #listGames': function () {
+        Router.go('/listGames');
+    },
+    'click #newGame': function () {
+        Router.go('/newGame');
+    },
+    'click #practiceGame': function () {
+        Router.go('/game');
+    }
+});*/
+
+Template.rules.events({
     'click #home': function () {
         Router.go('/home');
     },
@@ -20,21 +38,6 @@ Template.home.events({
     }
 });
 
-Template.rules.events({
-    'click #home': function () {
-        Router.go('/home');
-    },
-    'click #rules': function () {
-        Router.go('/rules');
-    },
-    'click #listGames': function () {
-        Router.go('/listGames');
-    },
-    'click #newGame': function () {
-        Router.go('/newGame');
-    }
-});
-
 Template.newGame.events({
     'click #home': function () {
         Router.go('/home');
@@ -47,6 +50,9 @@ Template.newGame.events({
     },
     'click #newGame': function () {
         Router.go('/newGame');
+    },
+    'click #practiceGame': function () {
+        Router.go('/game');
     },
     'submit .newGame': function (event){
         // Prevent default browser form submit
@@ -64,6 +70,18 @@ Template.listGames.events({
     'click #home': function () {
         Router.go('/home');
     },
+    'click #rules': function () {
+        Router.go('/rules');
+    },
+    'click #listGames': function () {
+        Router.go('/listGames');
+    },
+    'click #newGame': function () {
+        Router.go('/newGame');
+    },
+    'click #practiceGame': function () {
+        Router.go('/game');
+    },
     'click #joinGame': function(event){
         /* Algorithm is as follows:
         1. Get BTC Amount which defines the game (for active games; completed games should be ignored)
@@ -74,11 +92,13 @@ Template.listGames.events({
     }
 });
 
+/*
 Template.about.events({
     'click #home': function () {
         Router.go('/home');
     }
 });
+*/
 
 Template.game.events({
     'click #home': function () {

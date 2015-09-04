@@ -6,6 +6,7 @@
     <p>Copyright &copy; TG Investments & Research, LLC., 2014-2015.</p>
 </template>
 
+<!--
 <template name="home">
     <h1>Win BTC if You are Better</h1>
     <hr />
@@ -17,32 +18,29 @@
         <button class="navigationButton" id="practiceGame">Practice Game</button>
     </div>
 </template>
+-->
 
 <template name="rules">
     <h1>Rules of the Game</h1>
     <hr />
     <div id="rulesParagraph">
-    <p>You can compete anonymously
-        against another anonymous player. We require you to use your
-        local bitoin wallet and to put your bet into an escrow account.
-        Another player can then hit your bet, play the game and the winner
-        earns two times the bitcoin bet. If a bet amount already exists you
-        have to hit the bet. </p>
-    <p>The workflow is as follows:</p>
+    <p>It's all anonymous. You compete against another player. Using your local wallet you put your bet into
+        an escrow account. A second player can then hit your bet, play the game and the winner
+        earns two times the bitcoin bet. If a bet amount already exists you have to hit the bet. </p>
     <ul>
-    <li>You start by either entering a New Game or Joining a Game.</li>
-    <li>To start a new Game click 'New Game' and enter BTC amount.
+    <li>1. You start by creating a new game or joining an existing game.</li>
+    <li>2a. To start a new Game click 'New Game' and enter BTC amount.
         Approve the amount and play.</li>
-    <li>To join a Game click 'Join Game' and click the BTC amount of the game.
+    <li>2b. To join a Game click 'Join Game' and click the BTC amount of the game.
     Approve the amount and play. If you win you will get 2 x the BTC amount.</li>
     </ul>
     <p><strong>THERE ARE NO TRANSACTION FEES OR CHARGES</strong></p>
     </div>
     <div id="navigation">
         <hr />
-        <button class="navigationButton" id="home">Home</button>
         <button class="navigationButton" id="newGame">New Game</button>
         <button class="navigationButton" id="listGames">Join Game</button>
+        <button class="navigationButton" id="practiceGame">Practice Game</button>
     </div>
 </template>
 
@@ -57,7 +55,9 @@
     <!--Navigation buttons-->
     <div id="navigation">
         <hr />
-        <button class="navigationButton" id="home">Home</button>
+        <button class="navigationButton" id="newGame">New Game</button>
+        <button class="navigationButton" id="listGames">Join Game</button>
+        <button class="navigationButton" id="practiceGame">Practice Game</button>
     </div>
 </template>
 
@@ -79,7 +79,9 @@
     </div>
     <div id="navigation">
         <hr />
-        <button class="navigationButton" id="home">Home</button>
+        <button class="navigationButton" id="newGame">New Game</button>
+        <button class="navigationButton" id="listGames">Join Game</button>
+        <button class="navigationButton" id="practiceGame">Practice Game</button>
     </div>
 </template>
 
@@ -91,15 +93,20 @@
     </div>
     <div id="navigation">
         <hr />
-        <button class="navigationButton" id="home">Home</button>
+        <button class="navigationButton" id="newGame">New Game</button>
+        <button class="navigationButton" id="listGames">Join Game</button>
+        <button class="navigationButton" id="practiceGame">Practice Game</button>
     </div>
 </template>
 
+<!--
 <template name="about">
     <h1>Don't worry about who created this as it's blockchain based and therefore does not matter.</h1>
     <div id="navigation">
         <hr />
-        <button class="navigationButton" id="home">Home</button>
+        <button class="navigationButton" id="newGame">New Game</button>
+        <button class="navigationButton" id="listGames">Join Game</button>
+        <button class="navigationButton" id="practiceGame">Practice Game</button>
     </div>
 </template>
 
@@ -113,3 +120,4 @@
     <a href="{{pathFor route='game'}}">Game</a>
     <a href="{{pathFor route='about'}}">About</a>
 </template>
+-->
