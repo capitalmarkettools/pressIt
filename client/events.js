@@ -2,7 +2,7 @@
  * Created by cmt on 8/22/15.
  */
 
-/*Template.home.events({
+Template.home.events({
     'click #home': function () {
         Router.go('/home');
     },
@@ -18,7 +18,7 @@
     'click #practiceGame': function () {
         Router.go('/game');
     }
-});*/
+});
 
 Template.rules.events({
     'click #home': function () {
@@ -103,7 +103,35 @@ Template.about.events({
 Template.game.events({
     'click #home': function () {
         Router.go('/home');
-        //workaround to make the Phaser game go away
-        location.reload();
+    },
+    'click #rules': function () {
+        Router.go('/rules');
+    },
+    'click #listGames': function () {
+        Router.go('/listGames');
+    },
+    'click #newGame': function () {
+        Router.go('/newGame');
+    },
+    'click #practiceGame': function () {
+        Router.go('/game');
+    }
+});
+
+Template.navigation.events({
+    'click #home': function () {
+        Router.go('/home');
+    },
+    'click #rules': function () {
+        Router.go('/rules');
+    },
+    'click #listGames': function () {
+        Router.go('/listGames');
+    },
+    'click #newGame': function () {
+        Router.go('/newGame');
+    },
+    'click #practiceGame': function () {
+        Router.go('/game');
     }
 });
