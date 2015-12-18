@@ -10,7 +10,7 @@ Template.game.helpers({
         var redSquare;
         var yellowRectangle;
         var score = 0.0;
-        var originalDistance = 0.0;
+        var originalDistance = game.world.height - 100 - 35;
 
         function preload() {
             game.load.image('redSquare', '/redSquare25x25.png');
@@ -44,14 +44,14 @@ Template.game.helpers({
             //Submit Button
 
             submitButton = game.add.button(380, 10, 'submitButton', callback=function(){
-                alert("Clicked");
+                alert("Score Submitted: "+score);
             }, this);
 
             //Score text
             text = game.add.text(10, 10, "Distance: " + score, {font: "30px Arial", fill: "#ff0044", align: "center"});
             text.anchor.set(0, 0);
             originalDistance = Math.round(game.physics.arcade.distanceBetween(redSquare, yellowRectangle));
-            text.text = "Score:";
+            text.text = "Score: 0";
         };
 
         var move = false;

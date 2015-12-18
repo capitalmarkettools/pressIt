@@ -1,11 +1,14 @@
 <template name="main">
-    <div class="container" id="main">
-        {{> yield}}
-    </div>
-    <hr />
-    <div id="navigation">
-        {{> navigation}}
-    </div>
+    {{> loginButtons}}
+    {{#if currentUser}}
+        <div class="container" id="main">
+            {{> yield}}
+        </div>
+        <hr />
+        <div id="navigation">
+            {{> navigation}}
+        </div>
+    {{/if}}
     <div id="footer">
         <p>Copyright &copy; TG Investments & Research, LLC., 2014-2015.</p>
     </div>
@@ -20,18 +23,21 @@
     <h1>Rules of the Game</h1>
     <hr />
     <div id="rulesParagraph">
-    <p>It's all anonymous. You compete against another player. Using your local wallet you put your bet into
-        an escrow account. A second player can then hit your bet, play the game and the winner
-        earns two times the bitcoin bet. If a bet amount already exists you have to hit the bet. </p>
-    <ul>
-    <li>1. You start by creating a new game or joining an existing game.</li>
-    <li>2a. To start a new Game click 'New Game' and enter BTC amount.
-        Approve the amount and play.</li>
-    <li>2b. To join a Game click 'Join Game' and click the BTC amount of the game.
-    Approve the amount and play. If you win you will get 2 x the BTC amount.</li>
-    </ul>
-    <p><strong>THERE ARE NO TRANSACTION FEES OR CHARGES</strong></p>
+        <p>It's all anonymous. You compete against another player. Using your local wallet you put your bet into
+            an escrow account. A second player can then hit your bet, play the game and the winner
+            earns two times the bitcoin bet. If a bet amount already exists you have to hit the bet. </p>
+        <ul>
+        <li>1. You start by creating a new game or joining an existing game.</li>
+        <li>2a. To start a new Game click 'New Game' and enter BTC amount.
+            Approve the amount and play.</li>
+        <li>2b. To join a Game click 'Join Game' and click the BTC amount of the game.
+        Approve the amount and play. If you win you will get 2 x the BTC amount.</li>
+        </ul>
+        <p><strong>THERE ARE NO TRANSACTION FEES OR CHARGES</strong></p>
     </div>
+    <form class="btcAddress">
+        <input type="string" name="btcAddress" placeholder={{userBTCAddress}} />
+    </form>
 </template>
 
 <template name="newGame">
@@ -64,7 +70,9 @@
 </template>
 
 <template name="game">
-    <h1>Play! The better one will earn the bid!</h1>
+    <h3>Play! The better one will earn the bid! Each click outside the Submit button stops or starts
+        the red square. Do not let the red square hit the yellow bar. The closer the red square gets
+        to the yellow bar without hittin git the higher the score.</h3>
     <hr />
     <div id="phaserGame">
         {{phaserGame}}
@@ -81,5 +89,5 @@
     <button class="navigationButton" id="newGame">New Game</button>
     <button class="navigationButton" id="listGames">List or Join Game</button>
     <button class="navigationButton" id="practiceGame">Practice Game</button>
-    <button class="navigationButton" id="rules">Rules</button>
+    <button class="navigationButton" id="rules">Rules/Settings</button>
 </template>

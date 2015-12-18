@@ -35,6 +35,12 @@ Template.rules.events({
     },
     'click #practiceGame': function () {
         Router.go('/game');
+    },
+    'submit .btcAddress': function(event){
+        //Prevent default browser form submit
+        event.preventDefault();
+        Meteor.call('setBTCAddress', event.target.btcAddress.value);
+        Router.go('/home');
     }
 });
 
