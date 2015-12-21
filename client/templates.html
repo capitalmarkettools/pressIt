@@ -15,7 +15,7 @@
 </template>
 
 <template name="home">
-    <h1>Win BTC if You are Better</h1>
+    <h1>Win Bitcoin if You are Better than your Opponent</h1>
     <hr />
 </template>
 
@@ -28,40 +28,40 @@
             earns two times the bitcoin bet. If a bet amount already exists you have to hit the bet. </p>
         <ul>
         <li>1. You start by creating a new game or joining an existing game.</li>
-        <li>2a. To start a new Game click 'New Game' and enter BTC amount.
+        <li>2a. To start a new Game click 'New Game' and enter Bitcoin amount.
             Approve the amount and play.</li>
-        <li>2b. To join a Game click 'Join Game' and click the BTC amount of the game.
-        Approve the amount and play. If you win you will get 2 x the BTC amount.</li>
+        <li>2b. To join a Game click 'Join Game' and click the Bitcoin amount of the game.
+        Approve the amount and play. If you win you will get 2 x the Bitcoin amount.</li>
         </ul>
         <p><strong>THERE ARE NO TRANSACTION FEES OR CHARGES</strong></p>
     </div>
     <form class="btcAddress">
-        <input type="string" name="btcAddress" placeholder={{userBTCAddress}} />
+        <strong>Your Bitcoin Address: </strong><input type="string" name="btcAddress" placeholder={{userBTCAddress}} />
     </form>
 </template>
 
 <template name="newGame">
-    <h1>Enter BTC amount for new game</h1>
-    <h1 style="color:red">WARNING: NEW GAME WILL ACCESS YOUR BTC WALLET</h1>
+    <h1>Enter Bitcoin amount for new game</h1>
+    <h1 style="color:red">WARNING: NEW GAME WILL ACCESS YOUR BITCOIN WALLET</h1>
     <hr />
     <!--Button to add a new game-->
     <form class="newGame">
-        <input type="number" step="0.00001" name="btcAmount" placeholder="Add Bet in BTC" />
+        <input type="number" step="0.00001" name="btcAmount" placeholder="Add Bet Amount in Bitcoin" />
     </form>
     <!--Navigation buttons-->
 </template>
 
 <template name="listGames">
     <h1>Current Games to Join</h1>
-    <h1 style="color:red">WARNING: JOINING A GAME WILL ACCESS YOUR BTC WALLET</h1>
+    <h1 style="color:red">WARNING: JOINING A GAME WILL ACCESS YOUR BITCOIN WALLET</h1>
     <hr />
     <div id="games">
     <ul>
         {{#each games}}
             <li>
                 <!--<input type="checkbox" checked="{{checked}}" class="toggle-checked" />-->
-                <button class="navigationButton" id="joinGame">Join Game</button>
-                -- BTC {{btcAmount}}
+                <button class="navigationButton" id="joinGame">Bet Amount {{btcAmount}}</button>
+                -- Status: {{status}} Player1: {{player1Name}} Player1: {{player2Name}}
                 <hr />
             </li>
         {{/each}}
