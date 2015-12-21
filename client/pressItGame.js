@@ -1,6 +1,6 @@
 Template.game.helpers({
     phaserGame: function() {
-        var game = new Phaser.Game(width = 600, height = 300, Phaser.AUTO, 'pressIt', {
+        var game = new Phaser.Game(width = 600, height = 300, Phaser.AUTO, 'phaserGameDom', {
             preload: preload,
             create: create,
             update: update
@@ -44,7 +44,9 @@ Template.game.helpers({
             //Submit Button
 
             submitButton = game.add.button(380, 10, 'submitButton', callback=function(){
-                alert("Score Submitted: "+score);
+                submitScore(score);
+                determineWinner(this);
+                Router.go('/listGames');
             }, this);
 
             //Score text
@@ -52,7 +54,7 @@ Template.game.helpers({
             text.anchor.set(0, 0);
             originalDistance = Math.round(game.physics.arcade.distanceBetween(redSquare, yellowRectangle));
             text.text = "Score: 0";
-        };
+        }
 
         var move = false;
 
@@ -73,8 +75,7 @@ Template.game.helpers({
             if (this.game.physics.arcade.overlap(redSquare, yellowRectangle)) {
                 alert("overlap");
             }
-        };
-
+        }
 
         function accelerateToObject(obj1, obj2, speed) {
             if (typeof speed === 'undefined') {
@@ -86,12 +87,9 @@ Template.game.helpers({
             obj1.body.force.y = Math.sin(angle) * speed;
         }
 
-        var clickedOnce = false;
         function stopStartSprite() {
-            if (move)
-                move = false;
-            else
-                move = true;
+            move = move ? false : true;
+
             redSquare.body.velocity.x = 0;
             redSquare.body.velocity.y = 0;
 
@@ -105,7 +103,6 @@ Template.game.helpers({
             var boundsB = spriteB.getBounds();
 
             return Phaser.Rectangle.intersects(boundsA, boundsB);
-
         }
     }
 });

@@ -16,7 +16,8 @@ Template.home.events({
         Router.go('/newGame');
     },
     'click #practiceGame': function () {
-        Router.go('/game');
+        if (isPlayerReadyToPlay())
+            Router.go('/game');
     }
 });
 
@@ -34,7 +35,8 @@ Template.rules.events({
         Router.go('/newGame');
     },
     'click #practiceGame': function () {
-        Router.go('/game');
+        if (isPlayerReadyToPlay())
+            Router.go('/game');
     },
     'submit .btcAddress': function(event){
         //Prevent default browser form submit
@@ -60,7 +62,8 @@ Template.newGame.events({
         Router.go('/newGame');
     },
     'click #practiceGame': function () {
-        Router.go('/game');
+        if (isPlayerReadyToPlay())
+            Router.go('/game');
     },
     'submit .newGame': function (event){
         // Prevent default browser form submit
@@ -86,7 +89,8 @@ Template.listGames.events({
         Router.go('/newGame');
     },
     'click #practiceGame': function () {
-        Router.go('/game');
+        if (isPlayerReadyToPlay())
+            Router.go('/game');
     },
     'click #joinGame': function(event) {
         // Prevent default browser form submit
@@ -128,7 +132,8 @@ Template.game.events({
         Router.go('/newGame');
     },
     'click #practiceGame': function () {
-        Router.go('/game');
+        if (isPlayerReadyToPlay())
+            Router.go('/game');
     }
 });
 
@@ -146,6 +151,7 @@ Template.navigation.events({
         Router.go('/newGame');
     },
     'click #practiceGame': function () {
-        Router.go('/game');
+        if (isPlayerReadyToPlay())
+            Router.go('/game');
     }
 });

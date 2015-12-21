@@ -1,5 +1,5 @@
 <template name="main">
-    {{> loginButtons}}
+    Login: {{> loginButtons}}
     {{#if currentUser}}
         <div class="container" id="main">
             {{> yield}}
@@ -36,7 +36,7 @@
         <p><strong>THERE ARE NO TRANSACTION FEES OR CHARGES</strong></p>
     </div>
     <form class="btcAddress">
-        <strong>Your Bitcoin Address: </strong><input type="string" name="btcAddress" placeholder={{userBTCAddress}} />
+        <strong>Your Bitcoin Address: </strong><input type="text" name="btcAddress" placeholder={{userBTCAddress}} />
     </form>
 </template>
 
@@ -61,7 +61,10 @@
             <li>
                 <!--<input type="checkbox" checked="{{checked}}" class="toggle-checked" />-->
                 <button class="navigationButton" id="joinGame">Bet Amount {{btcAmount}}</button>
-                -- Status: {{status}} Player1: {{player1Name}} Player1: {{player2Name}}
+                <strong>{{status}}:</strong>
+                <strong>{{player1Name}}</strong> / {{player1Score}} / {{player1Status}} /
+                <strong>{{player2Name}}</strong> / {{player2Score}} / {{player2Status}} /
+                <strong>{{winner}}</strong>
                 <hr />
             </li>
         {{/each}}
@@ -74,7 +77,7 @@
         the red square. Do not let the red square hit the yellow bar. The closer the red square gets
         to the yellow bar without hittin git the higher the score.</h3>
     <hr />
-    <div id="phaserGame">
+    <div id="phaserGameDom">
         {{phaserGame}}
     </div>
 </template>
@@ -88,6 +91,6 @@
     <button class="navigationButton" id="home">Home</button>
     <button class="navigationButton" id="newGame">New Game</button>
     <button class="navigationButton" id="listGames">List or Join Game</button>
-    <button class="navigationButton" id="practiceGame">Practice Game</button>
+    <button class="navigationButton" id="practiceGame">Game</button>
     <button class="navigationButton" id="rules">Rules/Settings</button>
 </template>

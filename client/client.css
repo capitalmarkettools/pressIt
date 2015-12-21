@@ -42,9 +42,10 @@ ul {
     margin: 5px;
 }
 
-#phaserGame{
+#phaserGameDom{
     margin-top: 500px;
-    text-align: center;
+    /*text-align: center;*/
     margin: 0 auto;
-    max-width: 60px;
+    /*max-width: 60px;*/
 }
+
