@@ -24,7 +24,7 @@
 </template>
 
 <template name="home">
-    <p>Win Bitcoin if You are Better than your Opponent</p>
+    <p>Play Against Others One on One</p>
     <hr />
 </template>
 
@@ -32,37 +32,40 @@
     <p>Rules of the Game</p>
     <hr />
     <div id="rulesParagraph">
-        <p>It's all anonymous. You compete against another player. Using your local wallet you put your bet into
-            an escrow account. A second player can then hit your bet, play the game and the winner
-            earns two times the bitcoin bet. If a bet amount already exists you have to hit the bet. </p>
+        <p>It's all anonymous. You compete against another player. You can either list a new game or join
+            a game. A second player can then hit your bet, play the game and the winner
+            earns two times the bet. If a bet amount already exists you have to hit the bet.
+            It's all for fun and no money is exchanged. </p>
         <ul>
         <li>1. You start by creating a new game or joining an existing game.</li>
-        <li>2a. To start a new Game click 'New Game' and enter Bitcoin amount.
+            <li>2a. To start a new Game click 'New Game' and enter amount.
             Approve the amount and play.</li>
-        <li>2b. To join a Game click 'Join Game' and click the Bitcoin amount of the game.
-        Approve the amount and play. If you win you will get 2 x the Bitcoin amount.</li>
+            <li>2b. To join a Game click 'Join Game' and click the amount of the game.
+                Approve the amount and play. If you win you will get 2 x the amount.
+            </li>
         </ul>
         <p><strong>THERE ARE NO TRANSACTION FEES OR CHARGES</strong></p>
     </div>
     <form class="btcAddress">
-        <strong>Your Bitcoin Address: </strong><input type="text" name="btcAddress" placeholder={{userBTCAddress}} />
+        <strong>Your Dummy Address (optional): </strong><input type="text" name="btcAddress"
+                                                               placeholder={{userBTCAddress}}/>
     </form>
 </template>
 
 <template name="newGame">
-    <p>Enter Bitcoin amount for new game</p>
-    <p style="color:red">WARNING: NEW GAME WILL ACCESS YOUR BITCOIN WALLET</p>
+    <p>Enter amount for new game</p>
+    <!--<p style="color:red">WARNING: NEW GAME WILL ACCESS YOUR BITCOIN WALLET</p>-->
     <hr />
     <!--Button to add a new game-->
     <form class="newGame">
-        <input type="number" step="0.00001" name="btcAmount" placeholder="Add Bet Amount in Bitcoin" />
+        <input type="number" step="0.00001" name="Amount" placeholder="Add Bet Amount"/>
     </form>
     <!--Navigation buttons-->
 </template>
 
 <template name="listGames">
     <p>Current Games to Join</p>
-    <p style="color:red">WARNING: JOINING A GAME WILL ACCESS YOUR BITCOIN WALLET</p>
+    <!--<p style="color:red">WARNING: JOINING A GAME WILL ACCESS YOUR BITCOIN WALLET</p>-->
     <hr />
     <div id="games">
     <ul>
@@ -85,14 +88,14 @@
         the red square. Do not let the red square hit the yellow bar. The closer the red square gets
         to the yellow bar without hitting it the higher the score.</p>
     <hr />
-    <div class="row" text-align: center id="phaserGameDom">
+    <div class="row" align="center" id="phaserGameDom">
         {{phaserGame}}
     </div>
 </template>
 
-<template name="about">
-    <p>Don't worry about who created this as it's blockchain based and therefore does not matter.</p>
-</template>
+<!--<template name="about">-->
+<!--<p>Don't worry about who created this as it's blockchain based and therefore does not matter.</p>-->
+<!--</template>-->
 
 <template name="navigation">
     <div class="row">
