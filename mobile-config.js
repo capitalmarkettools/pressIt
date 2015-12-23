@@ -1,7 +1,7 @@
 App.info({
   name: 'pressIt',
   description: 'A skill based game to win/loose BTC.',
-  author: 'CapitalMarketTools.org',
+  author: 'CapitalMarketTools',
   email: 'tim@capitalmarkettools.com',
   website: 'http://pressit.capitalmarkettools.org.meteor.com',
   version: '0.0.1'

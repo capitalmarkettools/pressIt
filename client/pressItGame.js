@@ -1,6 +1,7 @@
 Template.game.helpers({
     phaserGame: function() {
-        var game = new Phaser.Game(width = 600, height = 300, Phaser.AUTO, 'phaserGameDom', {
+        //keep width in line with css
+        var game = new Phaser.Game(width = 200, height = 200, Phaser.CANVAS, 'phaserGameDom', {
             preload: preload,
             create: create,
             update: update
@@ -15,7 +16,7 @@ Template.game.helpers({
         function preload() {
             game.load.image('redSquare', '/redSquare25x25.png');
             game.load.image('yellowRectangle', '/yellowRectangle100x10.png');
-            game.load.spritesheet('submitButton', '/submitButton.png');
+            game.load.spritesheet('submitButton', '/submitButtonSmallFont10px.png');
             game.load.spritesheet('startFallButton', '/startFallButton.png');
             game.load.spritesheet('stopFallButton', '/stopFallButton.png');
         }
@@ -29,7 +30,7 @@ Template.game.helpers({
             //redSquare.anchor.set(0.5, 0.5);
             game.physics.p2.enable(redSquare);
 
-            yellowRectangle = game.add.sprite(x = game.world.centerX, y = game.world.height - 100, 'yellowRectangle');
+            yellowRectangle = game.add.sprite(x = game.world.centerX, y = game.world.height - 10, 'yellowRectangle');
             //yellowRectangle.anchor.set(0.5, 0.5);
             // yellowRectangle.physicsType = Phaser.SPRITE;
             game.physics.p2.enable(yellowRectangle);
@@ -43,14 +44,14 @@ Template.game.helpers({
 
             //Submit Button
 
-            submitButton = game.add.button(380, 10, 'submitButton', callback=function(){
+            submitButton = game.add.button(game.world.width - 65, 10, 'submitButton', callback=function(){
                 submitScore(score);
                 determineWinner(this);
                 Router.go('/listGames');
             }, this);
 
             //Score text
-            text = game.add.text(10, 10, "Distance: " + score, {font: "30px Arial", fill: "#ff0044", align: "center"});
+            text = game.add.text(10, 15, "Distance: " + score, {font: "10px Arial", fill: "#ffffff", align: "center"});
             text.anchor.set(0, 0);
             originalDistance = Math.round(game.physics.arcade.distanceBetween(redSquare, yellowRectangle));
             text.text = "Score: 0";

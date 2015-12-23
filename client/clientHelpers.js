@@ -4,7 +4,7 @@
 
 Template.listGames.helpers({
     games : function(){
-        return Games.find({}, {sort: {btcAmount:1}});
+        return Games.find({status: {$ne: 'completed'}}, {sort: {btcAmount:1}});
     }
 });
 

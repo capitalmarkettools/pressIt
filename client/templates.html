@@ -1,29 +1,35 @@
-<template name="main">
-    <br>
-    <div id="login>">
-        Login: {{> loginButtons}}
+<head>
+<!--not sure if this works for scalingbut here it is from <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" -->
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+</head>
+
+<!--this template is used globally for the app layout-->
+<template name="applicationLayout">
+    <div class="container">
+        <div class="row" id="login">
+            Login: {{> loginButtons}}
         </div>
-    {{#if currentUser}}
-        <div class="container" id="main">
+        {{#if currentUser}}
+        <div class="row" id="main">
             {{> yield}}
         </div>
-        <hr />
-        <div id="navigation">
+        <div class="row" id="navigation">
             {{> navigation}}
         </div>
-    {{/if}}
-    <div id="footer">
-        <p>Copyright &copy; TG Investments & Research, LLC., 2014-2015.</p>
+        {{/if}}
+        <div class="row" id="footer">
+            Copyright &copy; TG Investments & Research, LLC., 2014-2015.
+        </div>
     </div>
 </template>
 
 <template name="home">
-    <h1>Win Bitcoin if You are Better than your Opponent</h1>
+    <p>Win Bitcoin if You are Better than your Opponent</p>
     <hr />
 </template>
 
 <template name="rules">
-    <h1>Rules of the Game</h1>
+    <p>Rules of the Game</p>
     <hr />
     <div id="rulesParagraph">
         <p>It's all anonymous. You compete against another player. Using your local wallet you put your bet into
@@ -44,8 +50,8 @@
 </template>
 
 <template name="newGame">
-    <h1>Enter Bitcoin amount for new game</h1>
-    <h1 style="color:red">WARNING: NEW GAME WILL ACCESS YOUR BITCOIN WALLET</h1>
+    <p>Enter Bitcoin amount for new game</p>
+    <p style="color:red">WARNING: NEW GAME WILL ACCESS YOUR BITCOIN WALLET</p>
     <hr />
     <!--Button to add a new game-->
     <form class="newGame">
@@ -55,15 +61,14 @@
 </template>
 
 <template name="listGames">
-    <h1>Current Games to Join</h1>
-    <h1 style="color:red">WARNING: JOINING A GAME WILL ACCESS YOUR BITCOIN WALLET</h1>
+    <p>Current Games to Join</p>
+    <p style="color:red">WARNING: JOINING A GAME WILL ACCESS YOUR BITCOIN WALLET</p>
     <hr />
     <div id="games">
     <ul>
         {{#each games}}
             <li>
-                <!--<input type="checkbox" checked="{{checked}}" class="toggle-checked" />-->
-                <button class="navigationButton" id="joinGame">Bet Amount {{btcAmount}}</button>
+                <button class="btn btn-default" id="joinGame">Bet Amount {{btcAmount}}</button>
                 <strong>{{status}}:</strong>
                 <strong>{{player1Name}}</strong> / {{player1Score}} / {{player1Status}} /
                 <strong>{{player2Name}}</strong> / {{player2Score}} / {{player2Status}} /
@@ -76,24 +81,25 @@
 </template>
 
 <template name="game">
-    <h3>Play! The better one will earn the bid! Each click outside the Submit button stops or starts
+    <p>Play! The better one will earn the bid! Each click outside the Submit button stops or starts
         the red square. Do not let the red square hit the yellow bar. The closer the red square gets
-        to the yellow bar without hittin git the higher the score.</h3>
+        to the yellow bar without hitting it the higher the score.</p>
     <hr />
-    <div id="phaserGameDom">
+    <div class="row" text-align: center id="phaserGameDom">
         {{phaserGame}}
     </div>
 </template>
 
 <template name="about">
-    <h1>Don't worry about who created this as it's blockchain based and therefore does not matter.</h1>
+    <p>Don't worry about who created this as it's blockchain based and therefore does not matter.</p>
 </template>
 
 <template name="navigation">
-    <hr />
-    <button class="navigationButton" id="home">Home</button>
-    <button class="navigationButton" id="newGame">New Game</button>
-    <button class="navigationButton" id="listGames">List or Join Game</button>
-    <button class="navigationButton" id="practiceGame">Game</button>
-    <button class="navigationButton" id="rules">Rules/Settings</button>
+    <div class="row">
+        <button class="btn btn-default" id="home">Home</button>
+        <button class="btn btn-default" id="newGame">New Game</button>
+        <button class="btn btn-default" id="listGames">List or Join Game</button>
+        <button class="btn btn-default" id="practiceGame">Play Game</button>
+        <button class="btn btn-default" id="rules">Rules/Settings</button>
+    </div>
 </template>
