@@ -8,10 +8,11 @@ Template.game.helpers({
         });
         return game;
 
-        var redSquare;
-        var yellowRectangle;
-        var score = 0.0;
-        var originalDistance = game.world.height - 100 - 35;
+        //var redSquare;
+        //var yellowRectangle;
+        //var score;
+        //var originalDistance;
+        //var alive;
 
         function preload() {
             game.load.image('redSquare', '/redSquare25x25.png');
@@ -51,32 +52,38 @@ Template.game.helpers({
             }, this);
 
             //Score text
-            text = game.add.text(10, 15, "Distance: " + score, {font: "10px Arial", fill: "#ffffff", align: "center"});
+            text = game.add.text(10, 15, "Score: 0", {font: "10px Arial", fill: "#ffffff", align: "center"});
             text.anchor.set(0, 0);
             originalDistance = Math.round(game.physics.arcade.distanceBetween(redSquare, yellowRectangle));
-            text.text = "Score: 0";
+            alive = true;
+            move = false;
         }
 
-        var move = false;
-
+        //add alive() as well
         function update() {
-            if (checkOverlap(redSquare, yellowRectangle)){
+            //console.log(alive);
+            if (alive) {
+                //console.log('alive = true');
+                if (checkOverlap(redSquare, yellowRectangle)) {
+                    alive = false;
+                    score = 0;
+                }
+                else {
+                    //console('alive = false');
+                    score = originalDistance -
+                        Math.round(game.physics.arcade.distanceBetween(redSquare, yellowRectangle));
+
+                }
+                if (move)
+                    accelerateToObject(redSquare, yellowRectangle, 500);
+            }
+            else {
                 text.text = "Score: 0";
                 game.stage.backgroundColor = '#992d2d';
 //                Phaser.Signal.dispose();
             }
-
-            if (move) {
-                accelerateToObject(redSquare, yellowRectangle, 500);
-            }
-
-            if (this.game.physics.arcade.collide(redSquare, yellowRectangle)) {
-                alert("collision");
-            }
-            if (this.game.physics.arcade.overlap(redSquare, yellowRectangle)) {
-                alert("overlap");
-            }
         }
+
 
         function accelerateToObject(obj1, obj2, speed) {
             if (typeof speed === 'undefined') {
@@ -94,7 +101,9 @@ Template.game.helpers({
             redSquare.body.velocity.x = 0;
             redSquare.body.velocity.y = 0;
 
-            score = originalDistance - Math.round(game.physics.arcade.distanceBetween(redSquare, yellowRectangle));
+            //moved score calculation
+            // to update() to see if this improves score keeping
+            //score = originalDistance - Math.round(game.physics.arcade.distanceBetween(redSquare, yellowRectangle));
             text.text = "Score: " + score;
         }
 
