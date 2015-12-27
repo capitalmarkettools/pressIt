@@ -11,7 +11,10 @@ Template.game.rendered = function () {
     function preload() {
         game.load.image('redSquare', '/redSquare25x25.png');
         game.load.image('yellowRectangle', '/yellowRectangle100x10.png');
-        game.load.spritesheet('submitButton', '/submitButtonSmallFont10px.png');
+        //game.load.spritesheet('submitButton', '/submitButtonSmallFont10px.png');
+        game.load.spritesheet('startButton', '/startButtonFont10px.png');
+        game.load.spritesheet('stopButton', '/stopButtonFont10px.png');
+        game.load.spritesheet('submitButton', '/submitButtonFont10px.png');
         game.load.spritesheet('startFallButton', '/startFallButton.png');
         game.load.spritesheet('stopFallButton', '/stopFallButton.png');
     }
@@ -33,17 +36,27 @@ Template.game.rendered = function () {
         yellowRectangle.body.moves = false;
         yellowRectangle.immovable = true;
 
-        //with mouse click stop and start the sprite that's falling down
-        //only one click allowed
-        game.input.onDown.add(stopStartSprite, this);
+        //Start Button drops the red square. Stop stops it and takes score
+        //Start also starts the game which will prevent the user from refreshing
+        startButton = game.add.button(game.world.width - 65, 10, 'startButton', callback = function () {
+            stopStartSprite();
+            startButton.visible = false;
+            stopButton.visible = true;
+        }, this);
 
-        //Submit Button
+        stopButton = game.add.button(game.world.width - 65, 10, 'stopButton', callback = function () {
+            stopStartSprite();
+            stopButton.visible = false;
+            submitButton.visible = true;
+        }, this);
+        stopButton.visible = false;
 
         submitButton = game.add.button(game.world.width - 65, 10, 'submitButton', callback = function () {
             submitScore(score);
             determineWinner(this);
             Router.go('/listGames');
         }, this);
+        submitButton.visible = false;
 
         //Score text
         text = game.add.text(10, 15, "Score: 0", {font: "10px Arial", fill: "#ffffff", align: "center"});
