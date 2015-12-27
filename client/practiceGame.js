@@ -1,4 +1,5 @@
-Template.playGame.rendered = function () {
+//Keep in line with pressItGame
+Template.practiceGame.rendered = function () {
 
     //keep width in line with css
     var game = new Phaser.Game(width = 200, height = 200, Phaser.CANVAS, 'phaserGameDom', {
@@ -52,8 +53,9 @@ Template.playGame.rendered = function () {
         stopButton.visible = false;
 
         submitButton = game.add.button(game.world.width - 65, 10, 'submitButton', callback = function () {
-            submitScore(score);
-            determineWinner(this);
+            //submitScore(score);
+            //determineWinner(this);
+            alert("This is just practice. Your score is " + score + ".");
             Router.go('/listGames');
         }, this);
         submitButton.visible = false;

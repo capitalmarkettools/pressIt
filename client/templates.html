@@ -1,20 +1,18 @@
 <!--this template is used globally for the app layout-->
 <template name="applicationLayout">
-    <div class="container">
-        <div class="row" id="login">
-            Login: {{> loginButtons}}
-        </div>
-        {{#if currentUser}}
+    <div class="row" id="login">
+        Login: {{> loginButtons}}
+    </div>
+    {{#if currentUser}}
         <div class="row" id="main">
             {{> yield}}
         </div>
         <div class="row" id="navigation">
             {{> navigation}}
         </div>
-        {{/if}}
-        <div class="row" id="footer">
-            Copyright &copy; TG Investments & Research, LLC., 2014-2015.
-        </div>
+    {{/if}}
+    <div class="row" id="footer">
+        Copyright &copy; TG Investments & Research, LLC., 2014-2015.
     </div>
 </template>
 
@@ -78,11 +76,17 @@
     </div>
 </template>
 
-<template name="game">
-    <p>Play! The better one will earn the bid! Each click outside the Submit button stops or starts
-        the red square. Do not let the red square hit the yellow bar. The closer the red square gets
-        to the yellow bar without hitting it the higher the score.</p>
+<template name="playGame">
+    <p>Play Mode. Click Start to drop red rectangle. Click again to stop. The closer the red square gets
+        to the yellow bar the higher the score. Score is zero if red square hits yellow bar.</p>
     <hr />
+    <div class="row" align="center" id="phaserGameDom"></div>
+</template>
+
+<template name="practiceGame">
+    <p>Practice Mode. Click Start to drop red rectangle. Click again to stop. The closer the red square gets
+        to the yellow bar the higher the score. Score is zero if red square hits yellow bar.</p>
+    <hr/>
     <div class="row" align="center" id="phaserGameDom"></div>
 </template>
 
@@ -93,9 +97,10 @@
 <template name="navigation">
     <div class="row">
         <button class="btn btn-default" id="home">Home</button>
+        <button class="btn btn-default" id="practiceGame">Practice Game</button>
         <button class="btn btn-default" id="newGame">New Game</button>
         <button class="btn btn-default" id="listGames">List or Join Game</button>
-        <button class="btn btn-default" id="practiceGame">Play Game</button>
+        <button class="btn btn-default" id="playGame">Play Game</button>
         <button class="btn btn-default" id="rules">Rules/Settings</button>
     </div>
 </template>

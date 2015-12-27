@@ -15,9 +15,12 @@ Template.home.events({
     'click #newGame': function () {
         Router.go('/newGame');
     },
-    'click #practiceGame': function () {
+    'click #playGame': function () {
         if (isPlayerReadyToPlay())
-            Router.go('/game');
+            Router.go('/playGame');
+    },
+    'click #practiceGame': function () {
+        Router.go('/practiceGame');
     }
 });
 
@@ -34,9 +37,9 @@ Template.rules.events({
     'click #newGame': function () {
         Router.go('/newGame');
     },
-    'click #practiceGame': function () {
+    'click #playGame': function () {
         if (isPlayerReadyToPlay())
-            Router.go('/game');
+            Router.go('/playGame');
     },
     'submit .btcAddress': function(event){
         //Prevent default browser form submit
@@ -45,6 +48,9 @@ Template.rules.events({
         Meteor.call('setBTCAddress', event.target.btcAddress.value);
 
         Router.go('/home');
+    },
+    'click #practiceGame': function () {
+        Router.go('/practiceGame');
     }
 });
 
@@ -61,9 +67,9 @@ Template.newGame.events({
     'click #newGame': function () {
         Router.go('/newGame');
     },
-    'click #practiceGame': function () {
+    'click #playGame': function () {
         if (isPlayerReadyToPlay())
-            Router.go('/game');
+            Router.go('/playGame');
     },
     'submit .newGame': function (event){
         // Prevent default browser form submit
@@ -72,6 +78,9 @@ Template.newGame.events({
         Meteor.call('addGame', event.target.btcAmount.value);
 
         Router.go('/listGames');
+    },
+    'click #practiceGame': function () {
+        Router.go('/practiceGame');
     }
 });
 
@@ -88,9 +97,9 @@ Template.listGames.events({
     'click #newGame': function () {
         Router.go('/newGame');
     },
-    'click #practiceGame': function () {
+    'click #playGame': function () {
         if (isPlayerReadyToPlay())
-            Router.go('/game');
+            Router.go('/playGame');
     },
     'click #joinGame': function(event) {
         // Prevent default browser form submit
@@ -106,6 +115,9 @@ Template.listGames.events({
 
         Meteor.call('joinGame', this);
         //console.log('Out click listGames.#joinGame**********')
+    },
+    'click #practiceGame': function () {
+        Router.go('/practiceGame');
     }
 });
 
@@ -118,7 +130,7 @@ Template.about.events({
 });
 */
 
-Template.game.events({
+Template.playGame.events({
     'click #home': function () {
         Router.go('/home');
     },
@@ -131,9 +143,12 @@ Template.game.events({
     'click #newGame': function () {
         Router.go('/newGame');
     },
-    'click #practiceGame': function () {
+    'click #playGame': function () {
         if (isPlayerReadyToPlay())
-            Router.go('/game');
+            Router.go('/playGame');
+    },
+    'click #practiceGame': function () {
+        Router.go('/practiceGame');
     }
 });
 
@@ -150,8 +165,11 @@ Template.navigation.events({
     'click #newGame': function () {
         Router.go('/newGame');
     },
-    'click #practiceGame': function () {
+    'click #playGame': function () {
         if (isPlayerReadyToPlay())
-            Router.go('/game');
+            Router.go('/playGame');
+    },
+    'click #practiceGame': function () {
+        Router.go('/practiceGame');
     }
 });
