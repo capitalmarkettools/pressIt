@@ -29,6 +29,7 @@ Template.practiceGame.rendered = function () {
         //redSquare.anchor.set(0.5, 0.5);
         game.physics.p2.enable(redSquare);
 
+        //TODO Make game a smily face
         yellowRectangle = game.add.sprite(x = game.world.centerX, y = game.world.height - 10, 'yellowRectangle');
         //yellowRectangle.anchor.set(0.5, 0.5);
         // yellowRectangle.physicsType = Phaser.SPRITE;
@@ -40,6 +41,8 @@ Template.practiceGame.rendered = function () {
         //Start Button drops the red square. Stop stops it and takes score
         //Start also starts the game which will prevent the user from refreshing
         startButton = game.add.button(game.world.width - 65, 10, 'startButton', callback = function () {
+            //SubmitInitialScore initialized game so that user cannot click refresh/back...
+            //submitInitialScore();
             stopStartSprite();
             startButton.visible = false;
             stopButton.visible = true;
@@ -72,18 +75,20 @@ Template.practiceGame.rendered = function () {
         //console.log(alive);
         if (alive) {
             //console.log('alive = true');
+            if (move)
+                accelerateToObject(redSquare, yellowRectangle, 500);
+
             if (checkOverlap(redSquare, yellowRectangle)) {
                 alive = false;
                 score = 0;
             }
             else {
                 //console('alive = false');
-                score = originalDistance -
-                    Math.round(game.physics.arcade.distanceBetween(redSquare, yellowRectangle));
-
+                score = (Math.round(100 / originalDistance)) *
+                    (originalDistance -
+                    Math.round(game.physics.arcade.distanceBetween(redSquare, yellowRectangle)));
+                text.text = "Score: " + score;
             }
-            if (move)
-                accelerateToObject(redSquare, yellowRectangle, 500);
         }
         else {
             text.text = "Score: 0";

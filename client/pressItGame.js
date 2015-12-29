@@ -39,9 +39,24 @@ Template.playGame.rendered = function () {
         //Start Button drops the red square. Stop stops it and takes score
         //Start also starts the game which will prevent the user from refreshing
         startButton = game.add.button(game.world.width - 65, 10, 'startButton', callback = function () {
+            console.log('In startButton click() callback');
+            //Check if user has previosuly started game but then stopped.
+            // This is not legal and results in 0 score
+            if (playerHasAlreadyStartedGamePreviously()) {
+                console.log('playerHasAlreadyStartedGamePreviously() = true');
+                determineWinner(this);
+                Router.go('/listGames');
+                alert('You previously had started the game but did not finish. Score is 0.');
+            }
+            else
+                console.log('playerHasAlreadyStartedGamePreviously() = false');
+
+            //SubmitInitialScore initialized game so that user cannot click refresh/back...
+            submitInitialScore();
             stopStartSprite();
             startButton.visible = false;
             stopButton.visible = true;
+            console.log('Out startButton click() callback');
         }, this);
 
         stopButton = game.add.button(game.world.width - 65, 10, 'stopButton', callback = function () {
@@ -62,26 +77,35 @@ Template.playGame.rendered = function () {
         text = game.add.text(10, 15, "Score: 0", {font: "10px Arial", fill: "#ffffff", align: "center"});
         text.anchor.set(0, 0);
         originalDistance = Math.round(game.physics.arcade.distanceBetween(redSquare, yellowRectangle));
+        console.log('in create(): originalDistance = ' + originalDistance);
+        scalarToMakeScore100 = 100 / originalDistance;
         alive = true;
         move = false;
+        prevScore = 0;
     }
 
     function update() {
         //console.log(alive);
         if (alive) {
             //console.log('alive = true');
-            if (checkOverlap(redSquare, yellowRectangle)) {
+            if (move)
+                accelerateToObject(redSquare, yellowRectangle, 500);
+
+            if (overlaps(redSquare, yellowRectangle)) {
                 alive = false;
                 score = 0;
             }
             else {
                 //console('alive = false');
-                score = originalDistance -
-                    Math.round(game.physics.arcade.distanceBetween(redSquare, yellowRectangle));
+                score = Math.round(scalarToMakeScore100 *
+                    (originalDistance - game.physics.arcade.distanceBetween(redSquare, yellowRectangle)));
+                if (prevScore != score) {
+                    console.log('in update(): Scaler = ' + (100 / originalDistance));
+                }
+                prevScore = score;
 
+                text.text = "Score: " + score;
             }
-            if (move)
-                accelerateToObject(redSquare, yellowRectangle, 500);
         }
         else {
             text.text = "Score: 0";
@@ -112,7 +136,7 @@ Template.playGame.rendered = function () {
         text.text = "Score: " + score;
     }
 
-    function checkOverlap(spriteA, spriteB) {
+    function overlaps(spriteA, spriteB) {
 
         var boundsA = spriteA.getBounds();
         var boundsB = spriteB.getBounds();

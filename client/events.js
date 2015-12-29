@@ -2,45 +2,7 @@
  * Created by cmt on 8/22/15.
  */
 
-Template.home.events({
-    'click #home': function () {
-        Router.go('/home');
-    },
-    'click #rules': function () {
-        Router.go('/rules');
-    },
-    'click #listGames': function () {
-        Router.go('/listGames');
-    },
-    'click #newGame': function () {
-        Router.go('/newGame');
-    },
-    'click #playGame': function () {
-        if (isPlayerReadyToPlay())
-            Router.go('/playGame');
-    },
-    'click #practiceGame': function () {
-        Router.go('/practiceGame');
-    }
-});
-
 Template.rules.events({
-    'click #home': function () {
-        Router.go('/home');
-    },
-    'click #rules': function () {
-        Router.go('/rules');
-    },
-    'click #listGames': function () {
-        Router.go('/listGames');
-    },
-    'click #newGame': function () {
-        Router.go('/newGame');
-    },
-    'click #playGame': function () {
-        if (isPlayerReadyToPlay())
-            Router.go('/playGame');
-    },
     'submit .btcAddress': function(event){
         //Prevent default browser form submit
         event.preventDefault();
@@ -48,29 +10,10 @@ Template.rules.events({
         Meteor.call('setBTCAddress', event.target.btcAddress.value);
 
         Router.go('/home');
-    },
-    'click #practiceGame': function () {
-        Router.go('/practiceGame');
     }
 });
 
 Template.newGame.events({
-    'click #home': function () {
-        Router.go('/home');
-    },
-    'click #rules': function () {
-        Router.go('/rules');
-    },
-    'click #listGames': function () {
-        Router.go('/listGames');
-    },
-    'click #newGame': function () {
-        Router.go('/newGame');
-    },
-    'click #playGame': function () {
-        if (isPlayerReadyToPlay())
-            Router.go('/playGame');
-    },
     'submit .newGame': function (event){
         // Prevent default browser form submit
         event.preventDefault();
@@ -78,29 +21,10 @@ Template.newGame.events({
         Meteor.call('addGame', event.target.btcAmount.value);
 
         Router.go('/listGames');
-    },
-    'click #practiceGame': function () {
-        Router.go('/practiceGame');
     }
 });
 
 Template.listGames.events({
-    'click #home': function () {
-        Router.go('/home');
-    },
-    'click #rules': function () {
-        Router.go('/rules');
-    },
-    'click #listGames': function () {
-        Router.go('/listGames');
-    },
-    'click #newGame': function () {
-        Router.go('/newGame');
-    },
-    'click #playGame': function () {
-        if (isPlayerReadyToPlay())
-            Router.go('/playGame');
-    },
     'click #joinGame': function(event) {
         // Prevent default browser form submit
         event.preventDefault();
@@ -115,40 +39,6 @@ Template.listGames.events({
 
         Meteor.call('joinGame', this);
         //console.log('Out click listGames.#joinGame**********')
-    },
-    'click #practiceGame': function () {
-        Router.go('/practiceGame');
-    }
-});
-
-
-/*
-Template.about.events({
-    'click #home': function () {
-        Router.go('/home');
-    }
-});
-*/
-
-Template.playGame.events({
-    'click #home': function () {
-        Router.go('/home');
-    },
-    'click #rules': function () {
-        Router.go('/rules');
-    },
-    'click #listGames': function () {
-        Router.go('/listGames');
-    },
-    'click #newGame': function () {
-        Router.go('/newGame');
-    },
-    'click #playGame': function () {
-        if (isPlayerReadyToPlay())
-            Router.go('/playGame');
-    },
-    'click #practiceGame': function () {
-        Router.go('/practiceGame');
     }
 });
 
@@ -163,11 +53,19 @@ Template.navigation.events({
         Router.go('/listGames');
     },
     'click #newGame': function () {
-        Router.go('/newGame');
+        if (!isUserPartOfACurrentGame(Meteor.user()))
+            Router.go('/newGame');
+        else
+            alert('You cannot start a new game as you are part of one ' +
+                'that\'s not yet completed.');
     },
     'click #playGame': function () {
         if (isPlayerReadyToPlay())
             Router.go('/playGame');
+        else
+            alert('You cannot play a real game now. You are either still ' +
+                'part of one that\'s not yet completed or not part of any. ' +
+                'You can practice though.');
     },
     'click #practiceGame': function () {
         Router.go('/practiceGame');

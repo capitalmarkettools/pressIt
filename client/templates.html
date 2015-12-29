@@ -1,18 +1,20 @@
 <!--this template is used globally for the app layout-->
 <template name="applicationLayout">
-    <div class="row" id="login">
-        Login: {{> loginButtons}}
-    </div>
-    {{#if currentUser}}
-        <div class="row" id="main">
-            {{> yield}}
+    <div class="container">
+        <div class="row" id="login">
+            Login: {{> loginButtons}}
         </div>
-        <div class="row" id="navigation">
-            {{> navigation}}
+        {{#if currentUser}}
+            <div class="row" id="main">
+                {{> yield}}
+            </div>
+            <div class="row" id="navigation">
+                {{> navigation}}
+            </div>
+        {{/if}}
+        <div class="row" id="footer">
+            Copyright &copy; TG Investments & Research, LLC., 2014-2015.
         </div>
-    {{/if}}
-    <div class="row" id="footer">
-        Copyright &copy; TG Investments & Research, LLC., 2014-2015.
     </div>
 </template>
 
@@ -22,22 +24,20 @@
 </template>
 
 <template name="rules">
-    <p>Rules of the Game</p>
+    <p><strong>READ THIS STUFF</strong></p>
     <hr />
     <div id="rulesParagraph">
-        <p>It's all anonymous. You compete against another player. You can either list a new game or join
-            a game. A second player can then hit your bet, play the game and the winner
-            earns two times the bet. If a bet amount already exists you have to hit the bet.
-            It's all for fun and no money is exchanged. </p>
+        <p>This version is not yet linked to Bitcoin. All bets are therefore virtual.</p>
         <ul>
-        <li>1. You start by creating a new game or joining an existing game.</li>
-            <li>2a. To start a new Game click 'New Game' and enter amount.
-            Approve the amount and play.</li>
-            <li>2b. To join a Game click 'Join Game' and click the amount of the game.
-                Approve the amount and play. If you win you will get 2 x the amount.
+            <li>It's all anonymous. You compete against another player. You can either list a new game or join
+                a game. A second player can then hit your bet, play the game and the winner
+                earns two times the bet. If a bet amount already exists you have to hit the bet.
             </li>
+            <li>You start by creating a new game or joining an existing game.</li>
+            <li>Game is to drop a square as close to the target line without hitting it.</li>
+            <li>It's not allowed to refresh the page after hitting Start button and will result in zero score.</li>
         </ul>
-        <p><strong>THERE ARE NO TRANSACTION FEES OR CHARGES</strong></p>
+        <!--<p><strong>THERE ARE NO TRANSACTION FEES OR CHARGES</strong></p>-->
     </div>
     <form class="btcAddress">
         <strong>Your Dummy Address (optional): </strong><input type="text" name="btcAddress"
@@ -77,15 +77,17 @@
 </template>
 
 <template name="playGame">
-    <p>Play Mode. Click Start to drop red rectangle. Click again to stop. The closer the red square gets
-        to the yellow bar the higher the score. Score is zero if red square hits yellow bar.</p>
+    <p>Play Mode. Drop red item as close to yellow one without hitting it.
+        Click Start to drop and click again to stop red rectangle. Click again to stop.
+        There is only one try. Click submit after you have seen your score.</p>
     <hr />
     <div class="row" align="center" id="phaserGameDom"></div>
 </template>
 
 <template name="practiceGame">
-    <p>Practice Mode. Click Start to drop red rectangle. Click again to stop. The closer the red square gets
-        to the yellow bar the higher the score. Score is zero if red square hits yellow bar.</p>
+    <p>Practice Mode. Drop red item as close to yellow one without hitting it.
+        Click Start to drop and click again to stop red rectangle. Click again to stop.
+        There is only one try. Click submit after you have seen your score.</p>
     <hr/>
     <div class="row" align="center" id="phaserGameDom"></div>
 </template>
