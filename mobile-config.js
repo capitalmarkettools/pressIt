@@ -4,7 +4,7 @@ App.info({
   author: 'CapitalMarketTools',
   email: 'tim@capitalmarkettools.com',
   website: 'http://pressit.capitalmarkettools.org.meteor.com',
-  version: '0.0.1'
+  version: '1.0.0'
 });
 
 //TODO: Review all of these
@@ -25,7 +25,7 @@ App.launchScreens({
   // iOS
   'iphone': 'resources/splash/Default~iphone.png',
   'iphone_2x': 'resources/splash/Default@2x~iphone_640x960.png',
-  'iphone5': 'resources/splash/Default~iphone.png',
+  'iphone5': 'resources/splash/Default-568h@2x~iphone_640x1136.png',
   'iphone6': 'resources/splash/Default-1242@3x~iphone6s-landscape_2208x1242.png',
 //  'iphone6_portrait': 'resources/splash/Default-1242@3x~iphone6s-portrait_1242x2208.png',
 //  'iphone6_landscape': 'resources/splash/Default-1242@3x~iphone6s-landscape_2208x1242.png',
