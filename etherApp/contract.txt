@@ -1,7 +1,9 @@
-#This contract should not have business knowledge but behave only like a payment service
+# Draft outline for Ethereum contract to manage all games
+# This contract should not have business knowledge but behave only like a payment service
 
-#contract.storage is key-value pair with 2^160 keys. Conceptually one column with 2^160 rows. The following describes how to use additional columns
-#Key value = row number + (total number of rows x column number) + constant. Total supported rows is 2^256
+# contract.storage is key-value pair with 2^160 keys. Conceptually one column with 2^160 rows. The following
+# describes how to use additional columns
+# Key value = row number + (total number of rows x column number) + constant. Total supported rows is 2^256
 
 #Contract to keep track of all pressIt games
 #2 players per game
