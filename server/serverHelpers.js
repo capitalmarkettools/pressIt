@@ -2,6 +2,12 @@
  * Created by cmt on 12/17/15.
  */
 
+/* Only three functions are needed for bitcoin communication. Should be integrated directly into
+ * game logic:
+ * 1. send btc to escrow acct per game
+ * 2. create new escrow acct
+ * 3. send escrow balance to winner
+ */
 Accounts.onCreateUser(function(options, user){
 //    console.log("In onCreateUser")
     if(options.profile) {
