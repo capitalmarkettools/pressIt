@@ -42,12 +42,15 @@ Template.listGames.events({
     }
 });
 
+Template.submitPayment.events({
+    'click #monitorPaymentStatus': function(event){
+        Meteor.call('BTCHasClearedForPlayer1', 'sendInBTCAddressLater');
+    }
+});
+
 Template.navigation.events({
     'click #home': function () {
         Router.go('/home');
-    },
-    'click #rules': function () {
-        Router.go('/rules');
     },
     'click #listGames': function () {
         Router.go('/listGames');
@@ -63,11 +66,17 @@ Template.navigation.events({
         if (isPlayerReadyToPlay())
             Router.go('/playGame');
         else
-            alert('You cannot play a real game now. You are either still ' +
-                'part of one that\'s not yet completed or not part of any. ' +
-                'You can practice though.');
+            alert('You cannot play a real game yet. You are either still ' +
+                'part of one that\'s not yet completed, not part of any or BTC' +
+                ' has not settled yet. You can practice though.');
     },
     'click #practiceGame': function () {
         Router.go('/practiceGame');
+    },
+    'click #submitPayment': function () {
+        Router.go('/submitPayment');
+    },
+    'click #rules': function () {
+        Router.go('/rules');
     }
 });

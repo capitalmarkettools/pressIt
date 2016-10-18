@@ -15,6 +15,22 @@ Template.rules.helpers({
     }
 });
 
+Template.submitPayment.helpers({
+    BTCURI : function(){
+        //TODO: Set URI dynamically
+        if (isUserPartOfACurrentGame(Meteor.user())) {
+            if (game = getCurrentGame()) {
+                console.log('getCurrentGame() returns true');
+                uri = 'bitcoin:' + game.gameBTCAddress + '?amount=' + game.btcAmount;
+                console.log('Return uri: ' + uri);
+                return uri;
+            }
+        }
+        console.log('Return uri: null');
+        return null;
+    }
+});
+
 Accounts.ui.config({
     passwordSignupFields: "USERNAME_ONLY"
 });
