@@ -32,6 +32,11 @@ h1 {
     text-align: center;
 }
 
+h6 {
+    background: red;
+    text-align: center;
+}
+
 p {
     text-align: center;
 }
