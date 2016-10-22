@@ -4,7 +4,7 @@
 
 Template.listGames.helpers({
     games : function(){
-        return Games.find({}, {sort: {btcAmount:1}});
+        return Games.find({status: {$ne: 'completed'}}, {sort: {btcAmount: 1}});
         //return Games.find({status: {$ne: 'completed'}}, {sort: {btcAmount:1}});
     }
 });
@@ -12,11 +12,15 @@ Template.listGames.helpers({
 Template.rules.helpers({
     userBTCAddress: function () {
         return Meteor.user().profile.btcAddress;
+    },
+    BTCAddressSetForUser: function () {
+        return BTCAddressSetForUser();
     }
 });
 
 Template.submitPayment.helpers({
     BTCURI : function(){
+        return 'NOT YET IMPLEMENTED';
         //TODO: Set URI dynamically
         if (isUserPartOfACurrentGame(Meteor.user())) {
             if (game = getCurrentGame()) {

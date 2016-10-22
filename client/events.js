@@ -9,7 +9,7 @@ Template.rules.events({
 
         Meteor.call('setBTCAddress', event.target.btcAddress.value);
 
-        Router.go('/home');
+        Router.go('/rules');
     }
 });
 
@@ -18,6 +18,7 @@ Template.newGame.events({
         // Prevent default browser form submit
         event.preventDefault();
 
+        //browser template checks for bet values
         Meteor.call('addGame', event.target.btcAmount.value);
 
         Router.go('/listGames');
@@ -44,7 +45,10 @@ Template.listGames.events({
 
 Template.submitPayment.events({
     'click #monitorPaymentStatus': function(event){
-        Meteor.call('BTCHasClearedForPlayer1', 'sendInBTCAddressLater');
+        // Prevent default browser form submit
+        event.preventDefault();
+
+        Meteor.call('BTCHasClearedForPlayer1');
     }
 });
 
