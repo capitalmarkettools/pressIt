@@ -2,7 +2,7 @@
 Template.practiceGame.rendered = function () {
 
     //keep width in line with css
-    var game = new Phaser.Game(width = 200, height = 200, Phaser.CANVAS, 'phaserGameDom', {
+    var game = new Phaser.Game(width = 200, height = 200, Phaser.CANVAS, 'phaserGameDomPractice', {
         preload: preload,
         create: create,
         update: update

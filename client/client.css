@@ -11,6 +11,11 @@
     text-align: center;
 }
 
+#rulesParagraph{
+    text-align: left;
+    background: lightgrey;
+}
+
 #footer{
     background: lightgray;
     text-align: center;
@@ -84,3 +89,18 @@ p {
     /*!*max-width: 60px;*!*/
 /*}*/
 
+ul {
+    list-style-type: none;
+    padding: 0;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+ul li {
+    padding: 8px 16px;
+    border-bottom: 1px solid #ddd;
+}
+
+ul li:last-child {
+    border-bottom: none
+}

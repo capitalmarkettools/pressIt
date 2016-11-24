@@ -1,0 +1,35 @@
+<template name="rules">
+    <p><strong>READ THIS STUFF</strong></p>
+    <hr />
+    <div id="rulesParagraph">
+        <p align="left">It's all anonymous but you need to setup an account (no email needed).
+            You compete against another player. Both players bet the same small amount in BTC.
+            The winner gets both amounts.</p>
+        <p>The process is fully automated. You bet, someone else bets, both play and winner gets both bets.</p>
+        <p>Before being in a game you need to enter your bitcoin address to get any proceeds.
+                We only send to this address and never deduct. Enter it in Rules/Settings</p>
+        <p>You then create a new game or join an existing game.</p>
+        <p>Game is to drop a square as close to the target line without hitting it. If it hits then
+                score is zero and you loose or tie.</p>
+        <p>It's not allowed to refresh the page after hitting the Start button. If you do, it will
+                result in a zero score.</p>
+        <p>Practice the game before you play for real.</p>
+        <p>After joining or starting a game you have 24 hours to deposit the bitcoins. After 24 hours with no
+            deposit your participation in the game will be canceled.</p>
+        <p><strong>There are no transaction fees or charges. For support send email to tim at capitalmarkettools dot org</strong></p>
+    </div>
+    <hr/>
+    <form class="btcAddress">
+        <!--<strong>Your current BTC Address is: {{userBTCAddress}}</strong>-->
+        <!--<br/>-->
+        {{#if isBTCAddressSetForUser}}
+            <div class="form-group">
+                <label for="usr">Change BTC Address if needed:</label>
+                <input type="text" class="form-control" id="btcAddress" size=50 placeholder={{userBTCAddress}}>
+            </div>
+        {{else}}
+            Enter New BTC Address: <input type="text" name="btcAddress" size=50 placeholder='Enter Bitcoin Address'>
+        {{/if}}
+    </form>
+</template>
+

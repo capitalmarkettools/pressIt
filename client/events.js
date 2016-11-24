@@ -7,7 +7,8 @@ Template.rules.events({
         //Prevent default browser form submit
         event.preventDefault();
 
-        Meteor.call('setBTCAddress', event.target.btcAddress.value);
+        Meteor.call('setBTCAddressOfUser', event.target.btcAddress.value);
+        Meteor.call('setBTCAddressOfPlayerInGame', event.target.btcAddress.value);
 
         Router.go('/rules');
     }
@@ -15,40 +16,63 @@ Template.rules.events({
 
 Template.newGame.events({
     'submit .newGame': function (event){
+        cl('In newGame.events.newGame()');
         // Prevent default browser form submit
         event.preventDefault();
 
         //browser template checks for bet values
-        Meteor.call('addGame', event.target.btcAmount.value);
-
-        Router.go('/listGames');
+        if(isBTCAddressSetForUser()) {
+            if (!isUserPartOfACurrentGame(Meteor.user())) {
+                Meteor.call('addGame', event.target.btcAmount.value);
+                cl('Calling HasBTCCleared() method');
+                Meteor.call('HasBTCCleared');
+                Router.go('/listGames');
+            }
+            else{
+                alert('You cannot start a new game as you are part of one that\'s not yet completed.');
+                cl('User part of a current game that is not yet completed. Game not inserted');
+            }
+        }
+        else{
+            alert('Please set your BTC address in the Rules/Settings window');
+            cl('BTC address is not set. Provided alert. Game not inserted');
+        }
+        cl('Out newGame.events.newGame()');
     }
 });
 
 Template.listGames.events({
     'click #joinGame': function(event) {
+        cl('In listGames.events.joinGame()');
         // Prevent default browser form submit
         event.preventDefault();
 
-        /* Algorithm is as follows:
-         1. Get BTC Amount which defines the game (for active games; completed games should be ignored)
-         2. Use URI to send BTC to game bitcoin address
-         3. Find game in Mongo and update: In Progress
-         window.location = "bitcoin:175tWpb8K1S7NmH4Zx6rewF9WQrcZv245W?amount=20.3&label=Luke-Jr"
-         */
-        //console.log('In click listGames.#joinGame**********')
-
-        Meteor.call('joinGame', this);
-        //console.log('Out click listGames.#joinGame**********')
+        if(isBTCAddressSetForUser()) {
+            if (userAllowedToJoinGame(Meteor.user(), this)) {
+                Meteor.call('joinGame', this);
+                cl('Calling HasBTCCleared() method');
+                Meteor.call('HasBTCCleared');
+            }
+            else{
+                alert('You are not allowed to join this game.');
+                cl('User not allowed to join game. Provided alert. Game not joined');
+            }
+        }
+        else{
+            alert('Please set your BTC address in the Rules/Settings window');
+            cl('BTC address is not set. Provided alert. Game not joined');
+        }
+        cl('Out listGames.events.joinGame()');
     }
 });
 
-Template.submitPayment.events({
+Template.payment.events({
     'click #monitorPaymentStatus': function(event){
         // Prevent default browser form submit
         event.preventDefault();
 
-        Meteor.call('BTCHasClearedForPlayer1');
+        cl('Calling HasBTCCleared() method');
+        Meteor.call('HasBTCCleared');
     }
 });
 
@@ -77,8 +101,8 @@ Template.navigation.events({
     'click #practiceGame': function () {
         Router.go('/practiceGame');
     },
-    'click #submitPayment': function () {
-        Router.go('/submitPayment');
+    'click #payment': function () {
+        Router.go('/payment');
     },
     'click #rules': function () {
         Router.go('/rules');

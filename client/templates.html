@@ -2,7 +2,9 @@
 <template name="applicationLayout">
     <div class="container">
         <div class="row" id="login">
-            Login: {{> loginButtons}}
+            <div class="col-md-4">Login: {{> loginButtons}}</div>
+            <div class="col-md-4" align="center">Bet Amount: {{currentBetAmount}}</div>
+            <div class="col-md-4" align="right">Status: {{userStatus}}</div>
         </div>
         {{#if currentUser}}
             <div class="row" id="main">
@@ -23,40 +25,12 @@
     <hr />
 </template>
 
-<template name="rules">
-    <p><strong>READ THIS STUFF</strong></p>
-    <hr />
-    <div id="rulesParagraph">
-        <h6>This version is not yet linked to Bitcoin. All bets are therefore virtual.</h6>
-        <ul>
-            <li>It's all anonymous. You compete against another player. You can either list a new game or join
-                a game. A second player can then hit your bet, play the game and the winner
-                earns two times the bet. If a bet amount already exists you have to hit the bet.
-            </li>
-            <li>You start by creating a new game or joining an existing game.</li>
-            <li>Game is to drop a square as close to the target line without hitting it.</li>
-            <li>It's not allowed to refresh the page after hitting Start button and will result in zero score.</li>
-        </ul>
-        <p><strong>THERE ARE NO TRANSACTION FEES OR CHARGES</strong></p>
-        <strong>Your current BTC Address is: {{userBTCAddress}}</strong>
-    </div>
-    <form class="btcAddress">
-        {{#if BTCAddressSetForUser}}
-            Enter New BTC Address (optional): <input type="text" name="btcAddress" size=40
-                                                     placeholder={{userBTCAddress}}>
-        {{else}}
-            Enter New BTC Address: <input type="text" name="btcAddress" size=40 placeholder='Enter Bitcoin Address'>
-        {{/if}}
-    </form>
-</template>
-
 <template name="newGame">
     <p>Enter amount for new game</p>
     <hr />
     <!--Button to add a new game-->
     <form class="newGame">
-        <input type="number" step="0.0001" name="btcAmount" placeholder="Add Bet Amount" min="0.0005" max="0.001"
-               value="0.0005"/>
+        Add Bitcoin Bet Amount (0.0005-0.001): <input type="number" step="0.0001" name="btcAmount" min="0.0005" max="0.001" value="0.0005"/>
     </form>
 </template>
 
@@ -65,14 +39,33 @@
     <hr />
     <div id="games">
     <ul>
+        <div class="row" id="titles">
+            <div class="col-xs-6"><strong>Game</strong></div>
+            <div class="col-xs-6"><strong>Status</strong></div>
+        </div>
         {{#each games}}
             <li>
-                <button class="btn btn-default" id="joinGame">Bet Amount {{btcAmount}}</button>
-                <strong>{{status}}:</strong>
-                <strong>{{player1Name}}</strong> / {{player1Score}} / {{player1Status}} /
-                <strong>{{player2Name}}</strong> / {{player2Score}} / {{player2Status}} /
-                <strong>{{winner}}</strong>
-                <hr />
+                <!--<table border="1">-->
+                    <!--<tr>-->
+                        <!--<td><button class="btn btn-default" id="joinGame">Bet Amount: {{btcAmount}}</button></td>-->
+                        <!--<td><strong> {{status}}</strong></td>-->
+                        <!--&lt;!&ndash;<td>Winner: <strong>{{winner}}</strong></td>&ndash;&gt;-->
+                    <!--</tr>-->
+                    <!--&lt;!&ndash;<tr>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<td>Player1: <strong>{{player1Name}}</strong></td>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<td>Score: <strong>{{player1Score}}</strong></td>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<td>Status: <strong>{{player1Status}}</strong></td>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</tr>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<tr>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<td>Player2: <strong>{{player2Name}}</strong></td>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<td>Score: <strong>{{player2Score}}</strong></td>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<td>Status: <strong>{{player2Status}}</strong></td>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</tr>&ndash;&gt;-->
+                <!--</table>-->
+                <div class="row" id="login">
+                    <div class="col-xs-6"><button class="btn-sm btn-default" id="joinGame">Bet Amount: {{btcAmount}}</button></div>
+                    <div class="col-xs-6"><strong> {{status}}</strong></div>
+                </div>
             </li>
         {{/each}}
     </ul>
@@ -92,28 +85,31 @@
         Click Start to drop and click again to stop red rectangle. Click again to stop.
         There is only one try. Click submit after you have seen your score.</p>
     <hr/>
-    <div class="row" align="center" id="phaserGameDom"></div>
+    <div class="row" align="center" id="phaserGameDomPractice"></div>
 </template>
 
-<template name="submitPayment">
-    <p>You need to submit your BTC payment if you have joined a game. Click on the link below
-        and pay with your wallet. Link automatically sets amount and address. Each game has its
+<template name="payment">
+    <p>You need to submit your BTC payment if you have joined a game. Click on the Access Wallet to Send Bitcoins URI below
+        and pay with your wallet. Link automatically sets amount and address (make sure address is not changed). Each game has its
         own BTC address. After payment is submitted and cleared your status will change to 'ReadyToPlay'.</p>
+    <p>If you have submitted payment more than 10 minutes ago and are not ready to play yet then please click the
+    Monitor Payment Status button.</p>
     <hr/>
     <button class="btn btn-default" id="monitorPaymentStatus">monitorPaymentStatus</button>
     <hr/>
-    <!--<a href="bitcoin:1istendqWJ1mKvrdRUQZDL2F3tVDDyKdj?amount=0.1">‌​Access Wallet to Send Bitcoins</a>-->
     <a href={{BTCURI}} target="_blank">‌​Access Wallet to Send Bitcoins</a>
 </template>
 
 <template name="navigation">
     <div class="row">
-        <button class="btn btn-default" id="home">Home</button>
-        <button class="btn btn-default" id="practiceGame">Practice Game</button>
-        <button class="btn btn-default" id="newGame">New Game</button>
-        <button class="btn btn-default" id="listGames">List or Join Game</button>
-        <button class="btn btn-default" id="playGame">Play Game</button>
-        <button class="btn btn-default" id="submitPayment">Submit Payment</button>
-        <button class="btn btn-default" id="rules">Rules/Settings</button>
+        <div class="btn-group">
+            <button class="btn btn-default" id="home">Home</button>
+            <button class="btn btn-default" id="practiceGame">Practice Game</button>
+            <button class="btn btn-default" id="newGame">New Game</button>
+            <button class="btn btn-default" id="listGames">List or Join Game</button>
+            <button class="btn btn-default" id="playGame">Play Game</button>
+            <button class="btn btn-default" id="payment">Payment</button>
+            <button class="btn btn-default" id="rules">Rules/Settings</button>
+        </div>
     </div>
 </template>

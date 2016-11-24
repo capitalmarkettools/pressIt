@@ -1,3 +1,5 @@
-.idea/
 .meteor/local/
 node_modules/
+runPressIt
+**/.idea/workspace.xml
+**/.idea/tasks.xml
