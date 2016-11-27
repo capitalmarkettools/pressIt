@@ -1,10 +1,8 @@
 <!--this template is used globally for the app layout-->
 <template name="applicationLayout">
     <div class="container">
-        <div class="row" id="login">
-            <div class="col-md-4">Login: {{> loginButtons}}</div>
-            <div class="col-md-4" align="center">Bet Amount: {{currentBetAmount}}</div>
-            <div class="col-md-4" align="right">Status: {{userStatus}}</div>
+        <div id="login">
+        Login: {{> loginButtons}} Bet Amount: {{currentBetAmount}} User Status: {{userStatus}}
         </div>
         {{#if currentUser}}
             <div class="row" id="main">

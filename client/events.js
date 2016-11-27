@@ -25,7 +25,7 @@ Template.newGame.events({
             if (!isUserPartOfACurrentGame(Meteor.user())) {
                 Meteor.call('addGame', event.target.btcAmount.value);
                 cl('Calling HasBTCCleared() method');
-                Meteor.call('HasBTCCleared');
+                //Meteor.call('HasBTCCleared');
                 Router.go('/listGames');
             }
             else{
@@ -51,7 +51,7 @@ Template.listGames.events({
             if (userAllowedToJoinGame(Meteor.user(), this)) {
                 Meteor.call('joinGame', this);
                 cl('Calling HasBTCCleared() method');
-                Meteor.call('HasBTCCleared');
+                //Meteor.call('HasBTCCleared');
             }
             else{
                 alert('You are not allowed to join this game.');
