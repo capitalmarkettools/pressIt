@@ -41,3 +41,6 @@ App.launchScreens({
   'android_xhdpi_landscape': 'resources/splash/Default~iphone.png'
 });
 
+App.accessRule('bitcoin:*', {type: 'intent'});
+
+
