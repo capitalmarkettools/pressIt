@@ -24,8 +24,8 @@ Template.newGame.events({
         if(isBTCAddressSetForUser()) {
             if (!isUserPartOfACurrentGame(Meteor.user())) {
                 Meteor.call('addGame', event.target.btcAmount.value);
-                cl('Calling HasBTCCleared() method');
-                //Meteor.call('HasBTCCleared');
+                cl('Calling hasBTCCleared() method');
+                //Meteor.call('hasBTCCleared');
                 Router.go('/listGames');
             }
             else{
@@ -50,8 +50,8 @@ Template.listGames.events({
         if(isBTCAddressSetForUser()) {
             if (userAllowedToJoinGame(Meteor.user(), this)) {
                 Meteor.call('joinGame', this);
-                cl('Calling HasBTCCleared() method');
-                //Meteor.call('HasBTCCleared');
+                cl('Calling hasBTCCleared() method');
+                //Meteor.call('hasBTCCleared');
             }
             else{
                 alert('You are not allowed to join this game.');
@@ -71,8 +71,8 @@ Template.payment.events({
         // Prevent default browser form submit
         event.preventDefault();
 
-        cl('Calling HasBTCCleared() method');
-        Meteor.call('HasBTCCleared');
+        cl('Calling hasBTCCleared() method');
+        Meteor.call('hasBTCCleared');
     }
 });
 
