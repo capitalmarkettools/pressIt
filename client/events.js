@@ -16,53 +16,53 @@ Template.rules.events({
 
 Template.newGame.events({
     'submit .newGame': function (event){
-        cl('In newGame.events.newGame()');
+        console.log('In newGame.events.newGame()');
         // Prevent default browser form submit
         event.preventDefault();
 
         //browser template checks for bet values
         if(isBTCAddressSetForUser()) {
-            if (!isUserPartOfACurrentGame(Meteor.user())) {
+            if (!isUserPartOfACurrentGame()) {
                 Meteor.call('addGame', event.target.btcAmount.value);
-                cl('Calling hasBTCCleared() method');
+                console.log('Calling hasBTCCleared() method');
                 //Meteor.call('hasBTCCleared');
                 Router.go('/listGames');
             }
             else{
                 alert('You cannot start a new game as you are part of one that\'s not yet completed.');
-                cl('User part of a current game that is not yet completed. Game not inserted');
+                console.log('User part of a current game that is not yet completed. Game not inserted');
             }
         }
         else{
             alert('Please set your BTC address in the Rules/Settings window');
-            cl('BTC address is not set. Provided alert. Game not inserted');
+            console.log('BTC address is not set. Provided alert. Game not inserted');
         }
-        cl('Out newGame.events.newGame()');
+        console.log('Out newGame.events.newGame()');
     }
 });
 
 Template.listGames.events({
     'click #joinGame': function(event) {
-        cl('In listGames.events.joinGame()');
+        console.log('In listGames.events.joinGame()');
         // Prevent default browser form submit
         event.preventDefault();
 
         if(isBTCAddressSetForUser()) {
             if (userAllowedToJoinGame(Meteor.user(), this)) {
                 Meteor.call('joinGame', this);
-                cl('Calling hasBTCCleared() method');
+                console.log('Calling hasBTCCleared() method');
                 //Meteor.call('hasBTCCleared');
             }
             else{
                 alert('You are not allowed to join this game.');
-                cl('User not allowed to join game. Provided alert. Game not joined');
+                console.log('User not allowed to join game. Provided alert. Game not joined');
             }
         }
         else{
             alert('Please set your BTC address in the Rules/Settings window');
-            cl('BTC address is not set. Provided alert. Game not joined');
+            console.log('BTC address is not set. Provided alert. Game not joined');
         }
-        cl('Out listGames.events.joinGame()');
+        console.log('Out listGames.events.joinGame()');
     }
 });
 
@@ -71,7 +71,7 @@ Template.payment.events({
         // Prevent default browser form submit
         event.preventDefault();
 
-        cl('Calling hasBTCCleared() method');
+        console.log('Calling hasBTCCleared() method');
         Meteor.call('hasBTCCleared');
     }
 });
@@ -84,7 +84,7 @@ Template.navigation.events({
         Router.go('/listGames');
     },
     'click #newGame': function () {
-        if (!isUserPartOfACurrentGame(Meteor.user()))
+        if (!isUserPartOfACurrentGame())
             Router.go('/newGame');
         else
             alert('You cannot start a new game as you are part of one ' +

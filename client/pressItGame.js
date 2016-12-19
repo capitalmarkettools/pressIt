@@ -44,7 +44,7 @@ Template.playGame.rendered = function () {
             // This is not legal and results in 0 score
             if (playerHasAlreadyStartedGamePreviously()) {
                 console.log('playerHasAlreadyStartedGamePreviously() = true');
-                determineWinner(this);
+                determineWinnerAndPayout(this);
                 Router.go('/listGames');
                 alert('You previously had started the game but did not finish. Score is 0.');
             }
@@ -68,7 +68,7 @@ Template.playGame.rendered = function () {
 
         submitButton = game.add.button(game.world.width - 65, 10, 'submitButton', callback = function () {
             submitScore(score);
-            determineWinner(this);
+            determineWinnerAndPayout(this);
             Router.go('/listGames');
         }, this);
         submitButton.visible = false;

@@ -36,18 +36,18 @@ Template.rules.helpers({
 
 Template.payment.helpers({
     BTCURI : function(){
-        cl('In BTCURI() payment.helpers')
-        var user = Meteor.user();
+        console.log('In BTCURI() payment.helpers')
         var isPlayerOne = isPlayer1();
-        cl('IsPlayer1() returns '+isPlayerOne);
 
+        var user = Meteor.user();
         if (user === null)
-            throw new Meteor.Error('UserIsNull');
+            throw new Meteor.Error('assert', 'UserIsNull');
 
+        var uri = null;
         if (isUserPartOfACurrentGame(user)) {
             var game = getCurrentGame()
             if (game === null)
-                throw new Meteor.Error('getCurrentGameIsNull');
+                throw new Meteor.Error('assert', 'getCurrentGameIsNull');
 
             var gameAddress = '';
             if (isPlayerOne){
@@ -57,12 +57,13 @@ Template.payment.helpers({
                 gameAddress = game.player2GameBTCAddress;
             }
             uri = 'bitcoin:' + gameAddress + '?amount=' + game.btcAmount;
-            console.log('Out BTCURI() returns: ' + uri);
-            return uri;
         }
         else{
-            throw new Meteor.Error('UserIsNotPartOfCurrentGame');
+            uri = '';
         }
+
+        console.log('Out BTCURI(). Returns ' + uri);
+        return uri;
     }
 });
 
