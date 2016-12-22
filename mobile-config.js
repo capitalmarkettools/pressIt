@@ -42,5 +42,6 @@ App.launchScreens({
 });
 
 App.accessRule('bitcoin:*', {type: 'intent'});
+App.accessRule("*://pressit.capitalmarkettools.org/*");
 
 
