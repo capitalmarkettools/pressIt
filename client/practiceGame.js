@@ -29,7 +29,6 @@ Template.practiceGame.rendered = function () {
         //redSquare.anchor.set(0.5, 0.5);
         game.physics.p2.enable(redSquare);
 
-        //TODO Make game a smily face
         yellowRectangle = game.add.sprite(x = game.world.centerX, y = game.world.height - 10, 'yellowRectangle');
         //yellowRectangle.anchor.set(0.5, 0.5);
         // yellowRectangle.physicsType = Phaser.SPRITE;
