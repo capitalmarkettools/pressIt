@@ -23,10 +23,12 @@ App.icons({
 
 App.launchScreens({
   // iOS
-  'iphone': 'resources/splash/Default~iphone.png',
+  //'iphone': 'resources/splash/Default~iphone.png',
   'iphone_2x': 'resources/splash/Default@2x~iphone_640x960.png',
   'iphone5': 'resources/splash/Default-568h@2x~iphone_640x1136.png',
   'iphone6': 'resources/splash/Default-1242@3x~iphone6s-landscape_2208x1242.png',
+  'iphone6p_portrait': 'resources/splash/Default-1242@3x~iphone6s-portrait_1242x2208.png',
+  'iphone6p_landscape': 'resources/splash/Default-1242@3x~iphone6s-landscape_2208x1242.png',
   'ipad_portrait': 'resources/splash/Default~iphone.png',
   'ipad_landscape': 'resources/splash/Default~iphone.png',
   'ipad_portrait_2x': 'resources/splash/Default~iphone.png',
