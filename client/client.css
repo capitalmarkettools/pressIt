@@ -1,24 +1,50 @@
+body {
+    background: black;
+    color: darkorange;
+}
+
+/*
+. is selector for class
+a.b is element a with class b
+# is selector for id
+*/
+.container{
+    height: 100%;
+}
+
+.nav.dropdown.dropdown-toggle {
+    color: lightskyblue;
+}
+/*#dropdown-menu{*/
+    /*background: black;*/
+    /*color: white;*/
+/*}*/
+
 #main{
-    background: lightyellow;
+    /*background: gold;*/
+    /*align-content: stretch;*/
 }
 
 #login{
-    background: lightblue;
+    /*background: lime;*/
     text-align: center;
+    margin: 0 auto;
+    width: auto;
+    align-content: stretch;
 }
 
 #navigation{
-    background: lightgreen;
+    /*background: springgreen;*/
     text-align: center;
 }
 
 #rulesParagraph{
+    /*background: yellow;*/
     text-align: left;
-    background: lightgrey;
 }
 
 #footer{
-    background: lightgray;
+    /*background: cyan;*/
     text-align: center;
 }
 
@@ -34,6 +60,16 @@
     width: 200px;
 }
 
+.dropdown-menu{
+    background: black;
+    color: white;
+}
+
+.dropdown-menu > li > a{
+    background: black;
+    color: #23527c;
+}
+
 h1 {
     text-align: center;
 }
@@ -46,49 +82,6 @@ h6 {
 p {
     text-align: center;
 }
-
-/*body {*/
-    /*font-family: sans-serif;*/
-    /*background-color: #315481;*/
-    /*background-image: linear-gradient(to bottom, #315481, #918e82 100%);*/
-    /*background-attachment: fixed;*/
-
-    /*position: absolute;*/
-    /*top: 0;*/
-    /*bottom: 0;*/
-    /*left: 0;*/
-    /*right: 0;*/
-
-    /*padding: 0;*/
-    /*margin: 0;*/
-
-    /*font-size: 14px;*/
-/*}*/
-
-/*#main {*/
-    /*max-width: 600px;*/
-    /*margin: 0 auto;*/
-    /*background: yellow;*/
-/*}*/
-
-/*#navigation {*/
-    /*text-align: center;*/
-/*}*/
-
-/*.navigationButton {*/
-    /*width: 125px;  height: 50px;*/
-/*}*/
-
-/*#rulesParagraph {*/
-    /*margin: 5px;*/
-/*}*/
-
-/*#phaserGameDom{*/
-    /*margin-top: 500px;*/
-    /*!*text-align: center;*!*/
-    /*margin: 0 auto;*/
-    /*!*max-width: 60px;*!*/
-/*}*/
 
 ul {
     list-style-type: none;

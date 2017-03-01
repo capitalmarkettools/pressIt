@@ -1,18 +1,39 @@
 <!--this template is used globally for the app layout-->
 <template name="applicationLayout">
     <div class="container">
-        <div id="login">
+        <div class="navbar-collapse collapse" id="navbar" navbar-static-top>
+            <ul class="nav nav-justified">
+                <li class="active"><a href="/home"><strong>PressIt</strong></a> </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Manage Games<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/newGame">Create New Game</a></li>
+                        <li><a href="/listGames">List Existing Games</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Play Games<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/playGame">Play Game for Real</a></li>
+                        <li><a href="/practiceGame">Practice Game</a></li>
+                    </ul>
+                </li>
+                <li><a href="/payment">Payment</a></li>
+                <li><a href="/rules">Rules and Settings</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+        <div class="row" id="login">
         Login: {{> loginButtons}} Bet Amount: {{currentBetAmount}} User Status: {{userStatus}}
         </div>
         {{#if currentUser}}
             <div class="row" id="main">
                 {{> yield}}
             </div>
-            <div class="row" id="navigation">
-                {{> navigation}}
-            </div>
+            <!--<div class="row" id="navigation">-->
+                <!--{{> navigation}}-->
+            <!--</div>-->
         {{/if}}
-        <div class="row" id="footer">
+        <div class="navbar navbar-fixed-bottom" id="footer">
             <p><strong style="color: red;">Use at your own risk.</strong></p>
             Copyright &copy; TG Investments & Research, LLC., 2014-2017.
         </div>

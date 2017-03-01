@@ -21,6 +21,7 @@ Template.playGame.rendered = function () {
 
     function create() {
         game.physics.startSystem(Phaser.Physics.P2JS);
+        game.stage.backgroundColor = "#00008B";
 
         cursors = game.input.keyboard.createCursorKeys();
 
@@ -125,7 +126,7 @@ Template.playGame.rendered = function () {
     }
 
     function stopStartSprite() {
-        move = move ? false : true;
+        move = !move;
 
         redSquare.body.velocity.x = 0;
         redSquare.body.velocity.y = 0;
