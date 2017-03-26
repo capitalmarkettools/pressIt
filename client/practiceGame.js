@@ -22,7 +22,8 @@ Template.practiceGame.rendered = function () {
 
     function create() {
         game.physics.startSystem(Phaser.Physics.P2JS);
-        game.stage.backgroundColor = "#00008B";
+        //game.stage.backgroundColor = "#00008B";
+        game.stage.backgroundColor = "#2f4f4f";
 
         cursors = game.input.keyboard.createCursorKeys();
 

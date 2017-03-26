@@ -21,8 +21,8 @@ Template.playGame.rendered = function () {
 
     function create() {
         game.physics.startSystem(Phaser.Physics.P2JS);
-        game.stage.backgroundColor = "#00008B";
-
+        //game.stage.backgroundColor = "#00008B";
+        game.stage.backgroundColor = "#2f4f4f";
         cursors = game.input.keyboard.createCursorKeys();
 
         redSquare = game.add.sprite(x = game.world.centerX, y = 35, 'redSquare');

@@ -20,6 +20,11 @@ a.b is element a with class b
     /*color: white;*/
 /*}*/
 
+.btn, .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited{
+    background-color: #080909 !important;
+    color: darkorange !important;
+}
+
 #main{
     /*background: gold;*/
     /*align-content: stretch;*/
